@@ -1,0 +1,31 @@
+    // Functions to be implemented //
+
+General functions :
+    
+    - Start control
+
+    - Stop control
+    
+    - Disp dish and oven measured temperature
+    
+    - Disp current time since simulation started and time left
+    
+Control functions:
+
+    - ssController init (4 matrices A, B, C, D) --> Could be an object
+
+    - Next iteration calculation (x_{i+1} and y_{i}) (and time measurement) --> In ssController object
+    
+    - Input generation (first order response that depends of input core temperature and baking time)
+    
+Oven communication:
+
+    - Read KTF value
+
+    - Write oven reference temperature for each iteration (and mode for init)
+    
+    
+    
+NOTE : C++ matrix calculus :
+
+    https://www.quantstart.com/articles/Matrix-Classes-in-C-The-Header-File/

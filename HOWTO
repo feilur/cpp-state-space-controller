@@ -1,0 +1,8 @@
+- Changer le nom du projet dans "CMakeLists.txt"
+- Enregistrer votre code source dans "src/"
+- Se placer dans "workspace/" puis executer :
+	+ [build.sh]		: nettoyer "build/" puis compiler votre projet
+	+ [exec.sh] 		: executer
+	+ [build_exec.sh]	: nettoyer, compiler puis executer
+	+ [clean.sh]		: nettoyer "build/"
+	

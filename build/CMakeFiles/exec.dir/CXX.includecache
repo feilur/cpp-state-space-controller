@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/EU.BSHG.COM/extproux/Documents/Working_GIT_SmartOven/GOX8100-PFE_Smart_Oven/Controller/src/QSMatrix.cpp
+QSMatrix.h
+/home/EU.BSHG.COM/extproux/Documents/Working_GIT_SmartOven/GOX8100-PFE_Smart_Oven/Controller/src/QSMatrix.h
+
+/home/EU.BSHG.COM/extproux/Documents/Working_GIT_SmartOven/GOX8100-PFE_Smart_Oven/Controller/src/QSMatrix.h
+vector
+-
+iostream
+-
+QSMatrix.cpp
+/home/EU.BSHG.COM/extproux/Documents/Working_GIT_SmartOven/GOX8100-PFE_Smart_Oven/Controller/src/QSMatrix.cpp
+
+/home/EU.BSHG.COM/extproux/Documents/Working_GIT_SmartOven/GOX8100-PFE_Smart_Oven/Controller/src/example_ssController.cpp
+iostream
+-
+vector
+-
+ssController.h
+/home/EU.BSHG.COM/extproux/Documents/Working_GIT_SmartOven/GOX8100-PFE_Smart_Oven/Controller/src/ssController.h
+QSMatrix.h
+/home/EU.BSHG.COM/extproux/Documents/Working_GIT_SmartOven/GOX8100-PFE_Smart_Oven/Controller/src/QSMatrix.h
+
+/home/EU.BSHG.COM/extproux/Documents/Working_GIT_SmartOven/GOX8100-PFE_Smart_Oven/Controller/src/ssController.cpp
+ssController.h
+/home/EU.BSHG.COM/extproux/Documents/Working_GIT_SmartOven/GOX8100-PFE_Smart_Oven/Controller/src/ssController.h
+
+/home/EU.BSHG.COM/extproux/Documents/Working_GIT_SmartOven/GOX8100-PFE_Smart_Oven/Controller/src/ssController.h
+iostream
+-
+QSMatrix.h
+/home/EU.BSHG.COM/extproux/Documents/Working_GIT_SmartOven/GOX8100-PFE_Smart_Oven/Controller/src/QSMatrix.h
+
