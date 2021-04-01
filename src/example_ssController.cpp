@@ -50,7 +50,7 @@ int main()
     
     cout << "Reset of states vector..." << endl;
     hinf.reset();   // Reset states vector x_i to zero
-    hinf.getX_i().print(); // Verification of reset
+    hinf.getX_i().print(); // Reset check
     
     return 0;
 }
