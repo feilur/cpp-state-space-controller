@@ -1,3 +1,3 @@
 Useful tool for state-space controllers implementation.
 
-See the "example_ssController.cpp" to see the possibilies.
+See the "example_StateSpaceController.cpp" to see the possibilies.
