@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/exec.dir/src/QSMatrix.cpp.o CMakeFiles/exec.dir/src/example_ssController.cpp.o CMakeFiles/exec.dir/src/ssController.cpp.o  -o exec 

@@ -1,3 +1,0 @@
-/home/alexis/Documents/Programmation/GIT_ssController/state-space-controller/build/CMakeFiles/rebuild_cache.dir
-/home/alexis/Documents/Programmation/GIT_ssController/state-space-controller/build/CMakeFiles/edit_cache.dir
-/home/alexis/Documents/Programmation/GIT_ssController/state-space-controller/build/CMakeFiles/exec.dir
