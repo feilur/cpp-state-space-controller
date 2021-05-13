@@ -1,7 +1,15 @@
- #ifndef __QS_MATRIX_CPP
+#ifndef __QS_MATRIX_CPP
 #define __QS_MATRIX_CPP
 
 #include "QSMatrix.h"
+
+// Default Constructor 
+template<typename T>
+QSMatrix<T>::QSMatrix()
+{
+    rows = 1;
+    cols = 1;
+}
 
 // Parameter Constructor                                                                                                                                                      
 template<typename T>
@@ -211,13 +219,42 @@ QSMatrix<T> QSMatrix<T>::operator/(const T& rhs) const{
 // Multiply a matrix with a vector                                                                                                                                            
 template<typename T>
 std::vector<T> QSMatrix<T>::operator*(const std::vector<T>& rhs) const{
-  std::vector<T> result(rhs.size(), 0.0);
+  std::vector<T> result(rows, 0);
 
-  for (unsigned i=0; i<rows; i++) {
-    for (unsigned j=0; j<cols; j++) {
-      result[i] = this->mat[i][j] * rhs[j];
+  for (int i=0; i<rows; i++) 
+  {
+    for (int j=0; j<rhs.size(); j++) 
+    {
+      result[i] += this->mat[i][j] * rhs[j];
     }
   }
+
+  return result;
+}
+
+// Vector/vector operations
+template<typename T>
+std::vector<T> QSMatrix<T>::vectorAdd(const std::vector<T> vec1, const std::vector<T> vec2)
+{
+    std::vector<T> result(vec1.size(), 0);
+
+    for (int i=0; i<vec1.size(); i++) 
+    {
+        result[i] = vec1[i] + vec2[i];
+    }
+
+  return result;
+}
+
+template<typename T>
+std::vector<T> QSMatrix<T>::vectorSubstract(const std::vector<T> vec1, const std::vector<T> vec2)
+{
+    std::vector<T> result(vec1.size(), 0);
+
+    for (int i=0; i<vec1.size(); i++) 
+    {
+        result[i] = vec1[i] - vec2[i];
+    }
 
   return result;
 }
@@ -269,6 +306,21 @@ void QSMatrix<T>::print() const
     std::cout << std::endl;
     }
     std::cout << std::endl;
+}
+template<typename T>
+std::string QSMatrix<T>::getRepresentation() const
+{
+    std::stringstream buffer;
+    
+    for (int i=0; i< QSMatrix<T>::get_rows(); i++) {
+    for (int j=0; j< QSMatrix<T>::get_cols(); j++) {
+      buffer << std::ceil(QSMatrix<T>::operator()(i,j) * 100)/100 << " ";
+    }
+    buffer << std::endl;
+    }
+    buffer << std::endl;
+    
+    return buffer.str();
 }
 
 #endif

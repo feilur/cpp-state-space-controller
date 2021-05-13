@@ -1,0 +1,10 @@
+- Change project name in "CMakeLists.txt"
+- Don't change executable name in "CMakeLists.txt"
+- Save source code in "src/"
+- Go to "workspace/" then execute:
+	+ [build.sh]		: clean "build/" then build
+	+ [exec.sh] 		: execute the program
+	+ [build_exec.sh]	: clean, build, remove makefiles in build then execute
+	+ [clean.sh]		: clean "build/" (remove all files)
+	+ [clean_makefiles.sh]	: clean "build/" (remove makefiles only)
+	

@@ -1,4 +1,6 @@
 #!/bin/bash
+
 cd ../build/
-rm -r -f *
+rm -r -f * !
+cp -r ../resources ./
 cd ../workspace

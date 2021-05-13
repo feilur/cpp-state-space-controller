@@ -1,17 +1,21 @@
- 
 #ifndef __QS_MATRIX_H
 #define __QS_MATRIX_H
 
 #include <vector>
 #include <iostream>
+#include <string>  
+#include <sstream>   
+#include <cmath> 
 
-template <typename T> class QSMatrix {
+template <typename T> 
+class QSMatrix {
  private:
   std::vector<std::vector<T> > mat;
   unsigned rows;
   unsigned cols;
 
  public:
+  QSMatrix();
   QSMatrix(unsigned _rows, unsigned _cols, const T& _initial);
   QSMatrix(const QSMatrix<T>& rhs);
   virtual ~QSMatrix();
@@ -37,6 +41,10 @@ template <typename T> class QSMatrix {
   // Matrix/vector operations                                                                                                                                                                                                     
   std::vector<T> operator*(const std::vector<T>& rhs) const;
   std::vector<T> diag_vec();
+  
+  // Vector/vector operations
+  static std::vector<T> vectorAdd(const std::vector<T> vec1, const std::vector<T> vec2);
+  static std::vector<T> vectorSubstract(const std::vector<T> vec1, const std::vector<T> vec2);
 
   // Access the individual elements                                                                                                                                                                                               
   T& operator()(const unsigned& row, const unsigned& col);
@@ -47,7 +55,7 @@ template <typename T> class QSMatrix {
   unsigned get_cols() const;
   
   void print() const;
-
+  std::string getRepresentation() const;
 };
 
 #include "QSMatrix.cpp"
