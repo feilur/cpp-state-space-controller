@@ -9,11 +9,11 @@ using namespace std;
 
 int main() 
 {
-    StateSpaceController::help();   // Disp the help of the class
+    StateSpaceController<double>::help();   // Disp the help of the class
     
     // Use QSMatrix class only if you don't want to create a controller from .dat file
     
-    const double t_s = 5;   // Time step (seconds)
+    const float t_s = 5;   // Time step (seconds)
     
     const int ne(2); // Number of controller inputs (errors)
     const int nu(3); // Number of controller outputs (plant command)
@@ -29,11 +29,11 @@ int main()
     QSMatrix<double> D(nu,ne,1);
     
     
-    StateSpaceController K(A,B,C,D,t_s);    // Init of mixed-sensitivity H infinity StateSpaceController
+    StateSpaceController<double> K(A,B,C,D,t_s);    // Init of mixed-sensitivity H infinity StateSpaceController
     
-    // OR controller generation from formatted data file (see StateSpaceController.cpp for more details):
+    // OR controller generation from formatted data file (see StateSpaceController.h for more details):
     /*
-    StateSpaceController K("resources/controller.dat");
+    StateSpaceController<double> K("resources/controller.dat");
     const unsigned int ne = K.getNe();  // Number of controller inputs
     const unsigned int nu = K.getNu();  // Number of controller outputs
     */

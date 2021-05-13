@@ -1,12 +1,17 @@
+#ifndef STATESPACECONTROLLER_CPP
+#define STATESPACECONTROLLER_CPP
+
 #include "stateSpaceController.h"
 
 // Constructeur par defaut
-StateSpaceController::StateSpaceController() : m_A(1,1,0), m_B(1,1,0), m_C(1,1,0), m_D(1,1,1), m_t_s(1),m_i(0),m_t(0),m_nx(m_A.get_rows()),m_ne(m_B.get_cols()),m_nu(m_C.get_rows()), m_x_i(m_nx,0), m_x_ib(m_nx,0),m_r_i(m_ne,0),m_y_i(m_ne,0),m_e_i(m_ne,0),m_u_i(m_nu,0)
+template<typename T>
+StateSpaceController<T>::StateSpaceController() : m_A(1,1,0), m_B(1,1,0), m_C(1,1,0), m_D(1,1,1), m_t_s(1),m_i(0),m_t(0),m_nx(m_A.get_rows()),m_ne(m_B.get_cols()),m_nu(m_C.get_rows()), m_x_i(m_nx,0), m_x_ib(m_nx,0),m_r_i(m_ne,0),m_y_i(m_ne,0),m_e_i(m_ne,0),m_u_i(m_nu,0)
 {
 }
 
 // Constructeur
-StateSpaceController::StateSpaceController(QSMatrix<double> A, QSMatrix<double> B, QSMatrix<double> C, QSMatrix<double> D, double t_s):
+template<typename T>
+StateSpaceController<T>::StateSpaceController(QSMatrix<T> A, QSMatrix<T> B, QSMatrix<T> C, QSMatrix<T> D, const float t_s):
 m_A(A), m_B(B), m_C(C), m_D(D), m_t_s(t_s), m_i(0),m_t(0),m_nx(m_A.get_rows()),m_ne(m_B.get_cols()),m_nu(m_C.get_rows()), m_x_i(m_nx,0), m_x_ib(m_nx,0),m_r_i(m_ne,0),m_y_i(m_ne,0),m_e_i(m_ne,0),m_u_i(m_nu,0)
 {
     /*
@@ -17,7 +22,8 @@ m_A(A), m_B(B), m_C(C), m_D(D), m_t_s(t_s), m_i(0),m_t(0),m_nx(m_A.get_rows()),m
      */
 }
 
-StateSpaceController::StateSpaceController(std::string formattedDataFilePath):m_i(0),m_t(0)
+template<typename T>
+StateSpaceController<T>::StateSpaceController(std::string formattedDataFilePath):m_i(0),m_t(0)
 {
     /*
      * Constructor from file.dat : useful to import data from controller synthesis
@@ -70,12 +76,14 @@ StateSpaceController::StateSpaceController(std::string formattedDataFilePath):m_
 }
 
 // Constructeur de copie
-StateSpaceController::StateSpaceController(StateSpaceController const& other): 
+template<typename T>
+StateSpaceController<T>::StateSpaceController(StateSpaceController<T> const& other):
 m_A(other.m_A), m_B(other.m_B), m_C(other.m_C), m_D(other.m_D),m_i(0),m_t(0), m_t_s(other.m_t_s),m_nx(m_A.get_rows()),m_ne(m_B.get_cols()),m_nu(m_C.get_rows()), m_x_i(m_nx,0), m_x_ib(m_nx,0),m_r_i(m_ne,0),m_y_i(m_ne,0),m_e_i(m_ne,0),m_u_i(m_nu,0)
 {
 }
 
-StateSpaceController& StateSpaceController::operator=(const StateSpaceController& controller)
+template<typename T>
+StateSpaceController<T>& StateSpaceController<T>::operator=(const StateSpaceController<T>& controller)
 {
     // Here there is no reset but it could be necessary sometimes
     
@@ -90,25 +98,30 @@ StateSpaceController& StateSpaceController::operator=(const StateSpaceController
     m_ne = controller.getNe();
     m_nu = controller.getNu();
     
-    std::vector<double> x_i(m_nx,0);
+    std::vector<T> x_i(m_nx,0);
         
     m_x_i = x_i;
     m_x_ib = x_i;
         
-    std::vector<double> e_i(m_ne,0);
+    std::vector<T> e_i(m_ne,0);
         
     m_r_i = e_i;
     m_y_i = e_i;
     m_e_i = e_i;
         
-    std::vector<double> u_i(m_nu,0);
+    std::vector<T> u_i(m_nu,0);
         
     m_u_i = u_i;
     
     return *this;
 }
 
-void StateSpaceController::loadControllerData(std::string formattedDataFilePath)
+// (Virtual) Destructor
+template<typename T>
+StateSpaceController<T>::~StateSpaceController() {}
+
+template<typename T>
+void StateSpaceController<T>::loadControllerData(std::string formattedDataFilePath)
 {
     /*
      * Constructor from file.dat : useful to import data from controller synthesis
@@ -176,26 +189,26 @@ void StateSpaceController::loadControllerData(std::string formattedDataFilePath)
         std::getline(readStream, line);
         m_nu = std::stoi(line);
         
-        std::vector<double> x_i(m_nx,0);
+        std::vector<T> x_i(m_nx,0);
         
         m_x_i = x_i;
         m_x_ib = x_i;
         
-        std::vector<double> e_i(m_ne,0);
+        std::vector<T> e_i(m_ne,0);
         
         m_r_i = e_i;
         m_y_i = e_i;
         m_e_i = e_i;
         
-        std::vector<double> u_i(m_nu,0);
+        std::vector<T> u_i(m_nu,0);
         
         m_u_i = u_i;
 
 
-        QSMatrix<double> A(m_nx,m_nx,0);
-        QSMatrix<double> B(m_nx,m_ne,0);
-        QSMatrix<double> C(m_nu,m_nx,0);
-        QSMatrix<double> D(m_nu,m_ne,0);
+        QSMatrix<T> A(m_nx,m_nx,0);
+        QSMatrix<T> B(m_nx,m_ne,0);
+        QSMatrix<T> C(m_nu,m_nx,0);
+        QSMatrix<T> D(m_nu,m_ne,0);
         m_A = A;
         m_B = B;
         m_C = C;
@@ -244,7 +257,8 @@ void StateSpaceController::loadControllerData(std::string formattedDataFilePath)
 }
 
 // Exemple de methode statique
-void StateSpaceController::help() // ne pas remettre "static"
+template<typename T>
+void StateSpaceController<T>::help() // ne pas remettre "static"
 {
 	std::cout << "Help of the StateSpaceController class." << std::endl << std::endl 
 	<< "This class aims to init a discrete controller represented by its state-space representation then to compute the controller output at each iteration."
@@ -295,76 +309,98 @@ void StateSpaceController::help() // ne pas remettre "static"
 }
 
 // Exemple d'accesseurs :
-QSMatrix<double> StateSpaceController::getA() const
+template<typename T>
+QSMatrix<T> StateSpaceController<T>::getA() const
 {
 	return m_A;
 }
-void StateSpaceController::setA(QSMatrix<double> A)
+
+template<typename T>
+void StateSpaceController<T>::setA(QSMatrix<T> A)
 {
 	m_A = A;
 }
 
-QSMatrix<double> StateSpaceController::getB() const
+template<typename T>
+QSMatrix<T> StateSpaceController<T>::getB() const
 {
 	return m_B;
 }
-void StateSpaceController::setB(QSMatrix<double> B)
+
+template<typename T>
+void StateSpaceController<T>::setB(QSMatrix<T> B)
 {
 	m_B = B;
 }
 
-QSMatrix<double> StateSpaceController::getC() const
+template<typename T>
+QSMatrix<T> StateSpaceController<T>::getC() const
 {
 	return m_C;
 }
-void StateSpaceController::setC(QSMatrix<double> C)
+
+template<typename T>
+void StateSpaceController<T>::setC(QSMatrix<T> C)
 {
 	m_C = C;
 }
 
-QSMatrix<double> StateSpaceController::getD() const
+template<typename T>
+QSMatrix<T> StateSpaceController<T>::getD() const
 {
 	return m_D;
 }
-void StateSpaceController::setD(QSMatrix<double> D)
+
+template<typename T>
+void StateSpaceController<T>::setD(QSMatrix<T> D)
 {
 	m_D = D;
 }
 
-std::vector<double> StateSpaceController::getX_i() const
+template<typename T>
+std::vector<T> StateSpaceController<T>::getX_i() const
 {
     return m_x_i;
 }
 
-double StateSpaceController::getTimeStep() const
+template<typename T>
+float StateSpaceController<T>::getTimeStep() const
 {
     return m_t_s;
 }
 
-void StateSpaceController::setTimeStep(double t_s)
+template<typename T>
+void StateSpaceController<T>::setTimeStep(const float t_s)
 {
     m_t_s = t_s;
 }
 
-double StateSpaceController::getTime() const
+template<typename T>
+float StateSpaceController<T>::getTime() const
 {
     return m_t;
 }
-int StateSpaceController::getNx() const
+
+template<typename T>
+unsigned int StateSpaceController<T>::getNx() const
 {
     return m_nx;
 }
-int StateSpaceController::getNe() const
+
+template<typename T>
+unsigned int StateSpaceController<T>::getNe() const
 {
     return m_ne;
 }
-int StateSpaceController::getNu() const
+
+template<typename T>
+unsigned int StateSpaceController<T>::getNu() const
 {
     return m_nu;
 }
 
-// Exemple de methode constante :
-void StateSpaceController::printSS() const
+template<typename T>
+void StateSpaceController<T>::printSS() const
 {
 	// Print StateSpaceController matrices
     std::cout << "State-space representation of the controller (time step: " << m_t_s << " s)" 
@@ -387,7 +423,8 @@ void StateSpaceController::printSS() const
     std::cout << std::endl;
 }
 
-std::string StateSpaceController::getSS() const
+template<typename T>
+std::string StateSpaceController<T>::getSS() const
 {
     std::stringstream buffer;
     
@@ -414,7 +451,8 @@ std::string StateSpaceController::getSS() const
     return buffer.str();
 }
 
-void StateSpaceController::printState() const
+template<typename T>
+void StateSpaceController<T>::printState() const
 {
     // To do
     // t r1..rn y1..yn e1..en u1..un x1..xn
@@ -472,7 +510,8 @@ void StateSpaceController::printState() const
         std::cout << std::endl;
 }
 
-std::vector<double> StateSpaceController::currentOutput(const std::vector<double>& e_i)
+template<typename T>
+std::vector<T> StateSpaceController<T>::currentOutput(const std::vector<T>& e_i)
 {
     /*
      * Computes the current controller output (plant input) u_i 
@@ -483,14 +522,15 @@ std::vector<double> StateSpaceController::currentOutput(const std::vector<double
     
     // Update controller output
     // m_u_i = m_C * m_x_i + m_D * m_e_i;
-    m_u_i = QSMatrix<double>::vectorAdd(m_C * m_x_i, m_D * m_e_i);
+    m_u_i = QSMatrix<T>::vectorAdd(m_C * m_x_i, m_D * m_e_i);
     
-    StateSpaceController::nextState();  // Update next iteration state signal
+    nextState();  // Update next iteration state signal
     
     return m_u_i;
 }
 
-std::vector<double> StateSpaceController::currentOutput(const std::vector<double>& e_i, const std::vector<double>& u_min, const std::vector<double>& u_max)
+template<typename T>
+std::vector<T> StateSpaceController<T>::currentOutput(const std::vector<T>& e_i, const std::vector<T>& u_min, const std::vector<T>& u_max)
 {
     /*
      * Computes the current controller output (plant input) u_i 
@@ -500,16 +540,17 @@ std::vector<double> StateSpaceController::currentOutput(const std::vector<double
     m_e_i = e_i;    // Update error signal
     
     //m_u_i = m_C * m_x_i + m_D * m_e_i;// Update controller output
-    m_u_i = QSMatrix<double>::vectorAdd(m_C * m_x_i, m_D * m_e_i);
+    m_u_i = QSMatrix<T>::vectorAdd(m_C * m_x_i, m_D * m_e_i);
     
-    StateSpaceController::saturation(u_min, u_max); // Limit the controller output
+    saturation(u_min, u_max); // Limit the controller output
     
-    StateSpaceController::nextState();  // Update next iteration state signal
+    nextState();  // Update next iteration state signal
     
     return m_u_i;
 }
 
-std::vector<double> StateSpaceController::currentOutput(const std::vector<double>& e_i, const double& u_min, const double& u_max)
+template<typename T>
+std::vector<T> StateSpaceController<T>::currentOutput(const std::vector<T>& e_i, const T& u_min, const T& u_max)
 {
     /*
      * Computes the current controller output (plant input) u_i 
@@ -519,16 +560,17 @@ std::vector<double> StateSpaceController::currentOutput(const std::vector<double
     m_e_i = e_i;    // Update error signal
     
     //m_u_i = m_C * m_x_i + m_D * m_e_i;// Update controller output
-    m_u_i = QSMatrix<double>::vectorAdd(m_C * m_x_i, m_D * m_e_i);
+    m_u_i = QSMatrix<T>::vectorAdd(m_C * m_x_i, m_D * m_e_i);
     
-    StateSpaceController::saturation(u_min, u_max); // Limit the controller output
+    saturation(u_min, u_max); // Limit the controller output
     
-    StateSpaceController::nextState();  // Update next iteration state signal
+    nextState();  // Update next iteration state signal
     
     return m_u_i;
 }
 
-std::vector<double> StateSpaceController::currentOutput(const std::vector<double>& r_i, const std::vector<double>& y_i)
+template<typename T>
+std::vector<T> StateSpaceController<T>::currentOutput(const std::vector<T>& r_i, const std::vector<T>& y_i)
 {
     /*
      * Computes the current controller output (plant input) u_i
@@ -540,17 +582,18 @@ std::vector<double> StateSpaceController::currentOutput(const std::vector<double
     m_r_i = r_i;    // Update reference signal
     m_y_i = y_i;    // Update output signal (measured)
     
-    StateSpaceController::currentError();   // Update error signal
+    currentError();   // Update error signal
     
     //m_u_i = m_C * m_x_i + m_D * m_e_i; // Update controller output
-    m_u_i = QSMatrix<double>::vectorAdd(m_C * m_x_i, m_D * m_e_i);
+    m_u_i = QSMatrix<T>::vectorAdd(m_C * m_x_i, m_D * m_e_i);
     
-    StateSpaceController::nextState();  // Update next iteration state signal
+    nextState();  // Update next iteration state signal
     
     return m_u_i;
 }
 
-std::vector<double> StateSpaceController::currentOutput(const std::vector<double>& r_i, const std::vector<double>& y_i, const std::vector<double>& u_min, const std::vector<double>& u_max)
+template<typename T>
+std::vector<T> StateSpaceController<T>::currentOutput(const std::vector<T>& r_i, const std::vector<T>& y_i, const std::vector<T>& u_min, const std::vector<T>& u_max)
 {
     /*
      * Computes the current controller output (plant input) u_i
@@ -562,19 +605,20 @@ std::vector<double> StateSpaceController::currentOutput(const std::vector<double
     m_r_i = r_i;    // Update reference signal
     m_y_i = y_i;    // Update output signal (measured)
     
-    StateSpaceController::currentError();   // Update error signal
+    currentError();   // Update error signal
     
     //m_u_i = m_C * m_x_i + m_D * m_e_i; // Update controller output
-    m_u_i = QSMatrix<double>::vectorAdd(m_C * m_x_i, m_D * m_e_i);
+    m_u_i = QSMatrix<T>::vectorAdd(m_C * m_x_i, m_D * m_e_i);
     
-    StateSpaceController::saturation(u_min, u_max); // Limit the controller output
+    saturation(u_min, u_max); // Limit the controller output
     
-    StateSpaceController::nextState();  // Update next iteration state signal
+    nextState();  // Update next iteration state signal
     
     return m_u_i;
 }
 
-std::vector<double> StateSpaceController::currentOutput(const std::vector<double>& r_i, const std::vector<double>& y_i, const double& u_min, const double& u_max)
+template<typename T>
+std::vector<T> StateSpaceController<T>::currentOutput(const std::vector<T>& r_i, const std::vector<T>& y_i, const T& u_min, const T& u_max)
 {
     /*
      * Computes the current controller output (plant input) u_i
@@ -586,19 +630,20 @@ std::vector<double> StateSpaceController::currentOutput(const std::vector<double
     m_r_i = r_i;    // Update reference signal
     m_y_i = y_i;    // Update output signal (measured)
     
-    StateSpaceController::currentError();   // Update error signal
+    currentError();   // Update error signal
     
     //m_u_i = m_C * m_x_i + m_D * m_e_i; // Update controller output
-    m_u_i = QSMatrix<double>::vectorAdd(m_C * m_x_i, m_D * m_e_i);
+    m_u_i = QSMatrix<T>::vectorAdd(m_C * m_x_i, m_D * m_e_i);
     
-    StateSpaceController::saturation(u_min, u_max); // Limit the controller output
+    saturation(u_min, u_max); // Limit the controller output
     
-    StateSpaceController::nextState();  // Update next iteration state signal
+    nextState();  // Update next iteration state signal
     
     return m_u_i;
 }
 
-void StateSpaceController::saturation(const std::vector<double>& u_min, const std::vector<double>& u_max)
+template<typename T>
+void StateSpaceController<T>::saturation(const std::vector<T>& u_min, const std::vector<T>& u_max)
 {
     for (int k=0;k<m_nu;k++)
     {
@@ -613,7 +658,8 @@ void StateSpaceController::saturation(const std::vector<double>& u_min, const st
     }
 }
 
-void StateSpaceController::saturation(const double& u_min, const double& u_max)
+template<typename T>
+void StateSpaceController<T>::saturation(const T& u_min, const T& u_max)
 {
     for (int k=0;k<m_nu;k++)
     {
@@ -628,7 +674,8 @@ void StateSpaceController::saturation(const double& u_min, const double& u_max)
     }
 }
 
-void StateSpaceController::nextState()
+template<typename T>
+void StateSpaceController<T>::nextState()
 {
     /*
      * Computes the next controller state x_i
@@ -636,30 +683,34 @@ void StateSpaceController::nextState()
     m_x_ib = m_x_i; // Backup of the last state for display
     
     //m_x_i = m_A * m_x_i + m_B * m_e_i;
-    m_x_i = QSMatrix<double>::vectorAdd(m_A * m_x_i, m_B * m_e_i);
+    m_x_i = QSMatrix<T>::vectorAdd(m_A * m_x_i, m_B * m_e_i);
     
     m_t = m_i * m_t_s;
     m_i++;
 }
 
-void StateSpaceController::reset()
+template<typename T>
+void StateSpaceController<T>::reset()
 {
     /*
      * Reset states x_i (to zero)
      */
-    std::vector<double> zero(m_nx,0);
+    std::vector<T> zero(m_nx,0);
     m_x_i = zero;
     
     m_i = 0;
     m_t = 0;
 }
 
-void StateSpaceController::currentError()
+template<typename T>
+void StateSpaceController<T>::currentError()
 {
     /*
      * Computes the current error between global system output y_i
      * and reference signal r_i
      */
     //m_e_i = m_r_i - m_y_i;
-    m_e_i = QSMatrix<double>::vectorSubstract(m_r_i, m_y_i);
+    m_e_i = QSMatrix<T>::vectorSubstract(m_r_i, m_y_i);
 }
+
+#endif
