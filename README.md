@@ -1,4 +1,4 @@
-Useful tool for state-space controllers implementation.
+Useful tool for state-space controllers implementation (for robust control for example).
 
 See the "example_StateSpaceController.cpp" to see the possibilies.
 
