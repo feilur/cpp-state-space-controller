@@ -71,6 +71,9 @@ StateSpaceController<T>::StateSpaceController(std::string formattedDataFilePath)
      * D[nu,ne]
      * -------FILE_END-------
      */
+	
+    m_i = 0;
+    m_t = 0;
     
     loadControllerData(formattedDataFilePath);
 }
@@ -169,9 +172,6 @@ void StateSpaceController<T>::loadControllerData(std::string formattedDataFilePa
      * D[nu,ne]
      * -------FILE_END-------
      */
-    
-    m_i = 0;
-    m_t = 0;
     
     std::ifstream readStream;
     readStream.open(formattedDataFilePath.c_str());
