@@ -1,0 +1,17 @@
+digraph "src/QSMatrix.h"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node7 [label="src/QSMatrix.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node7 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="src/stateSpaceController.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$stateSpaceController_8h.html",tooltip="StateSpaceController class header. "];
+  Node8 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="src/example_StateSpaceController.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$example__StateSpaceController_8cpp.html",tooltip="This script demonstrates some StateSpaceController functions. "];
+  Node8 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="src/stateSpaceController.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$stateSpaceController_8cpp.html",tooltip="StateSpaceController class source file. "];
+  Node10 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="src/QSMatrix.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$QSMatrix_8cpp.html",tooltip="QSMatrix class source file. "];
+  Node11 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

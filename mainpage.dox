@@ -1,0 +1,3 @@
+/*! Useful tool for state-space controllers implementation (for robust control for example).
+ * See StateSpaceController class for more details.
+ */

@@ -1,0 +1,23 @@
+\hypertarget{QSMatrix_8cpp}{}\section{src/\+Q\+S\+Matrix.cpp File Reference}
+\label{QSMatrix_8cpp}\index{src/\+Q\+S\+Matrix.\+cpp@{src/\+Q\+S\+Matrix.\+cpp}}
+
+
+\hyperlink{classQSMatrix}{Q\+S\+Matrix} class source file.  
+
+
+{\ttfamily \#include \char`\"{}Q\+S\+Matrix.\+h\char`\"{}}\newline
+Include dependency graph for Q\+S\+Matrix.\+cpp\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+
+
+\subsection{Detailed Description}
+\hyperlink{classQSMatrix}{Q\+S\+Matrix} class source file. 
+
+\begin{DoxyAuthor}{Author}
+quantstart.\+com, updated by Alexis Proux 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+1 July 2021 
+\end{DoxyDate}

@@ -1,0 +1,31 @@
+\hypertarget{example__StateSpaceController_8cpp}{}\section{src/example\+\_\+\+State\+Space\+Controller.cpp File Reference}
+\label{example__StateSpaceController_8cpp}\index{src/example\+\_\+\+State\+Space\+Controller.\+cpp@{src/example\+\_\+\+State\+Space\+Controller.\+cpp}}
+
+
+This script demonstrates some \hyperlink{classStateSpaceController}{State\+Space\+Controller} functions.  
+
+
+{\ttfamily \#include \char`\"{}state\+Space\+Controller.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Q\+S\+Matrix.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+Include dependency graph for example\+\_\+\+State\+Space\+Controller.\+cpp\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{example__StateSpaceController_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{example__StateSpaceController_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+int {\bfseries main} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This script demonstrates some \hyperlink{classStateSpaceController}{State\+Space\+Controller} functions. 
+
+\hyperlink{classQSMatrix}{Q\+S\+Matrix} class can be totally unused by user if a data file is generated to import the controller matrices. See \hyperlink{classStateSpaceController_a6884754d53bc98c247ac4dd1f39be2ec}{State\+Space\+Controller\+::load\+Controller\+Data()} or \hyperlink{classStateSpaceController_aa44a3db59ff8e25bd03d9242356a6f10}{State\+Space\+Controller\+::\+State\+Space\+Controller()} for more details. \begin{DoxyAuthor}{Author}
+Alexis Proux 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+1 July 2021 
+\end{DoxyDate}

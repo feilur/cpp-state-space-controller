@@ -1,3 +1,12 @@
+/**
+ * @file example_StateSpaceController.cpp
+ * @brief This script demonstrates some StateSpaceController functions.
+ * @details QSMatrix class can be totally unused by user if a data file is generated to import the controller matrices.
+ * See StateSpaceController::loadControllerData() or StateSpaceController::StateSpaceController() for more details.
+ * @author Alexis Proux
+ * @date 1 July 2021
+ ******/
+
 #include "stateSpaceController.h"
 #include "QSMatrix.h"
 
@@ -37,7 +46,7 @@ int main()
     const unsigned int ne = K.getNe();  // Number of controller inputs
     const unsigned int nu = K.getNu();  // Number of controller outputs
     */
-    K.printSS(); // Disp the state-space representation of the controller
+    K.printStateSpace(); // Disp the state-space representation of the controller
     
     
     vector<double> ref(ne,1); // Constant reference signals

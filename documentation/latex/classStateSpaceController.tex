@@ -1,0 +1,753 @@
+\hypertarget{classStateSpaceController}{}\section{State\+Space\+Controller$<$ T $>$ Class Template Reference}
+\label{classStateSpaceController}\index{State\+Space\+Controller$<$ T $>$@{State\+Space\+Controller$<$ T $>$}}
+
+
+General State-\/\+Space Controller class.  
+
+
+
+
+{\ttfamily \#include $<$state\+Space\+Controller.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classStateSpaceController_aa44a3db59ff8e25bd03d9242356a6f10}{State\+Space\+Controller} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\hyperlink{classStateSpaceController_aa2541f05f5096b2793ca929b47bd4db7}{State\+Space\+Controller} (\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ A, \hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ B, \hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ C, \hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ D, const float t\+\_\+s)
+\begin{DoxyCompactList}\small\item\em Constructor using user-\/generated \hyperlink{classQSMatrix}{Q\+S\+Matrix} matrices. \end{DoxyCompactList}\item 
+\hyperlink{classStateSpaceController_a95b2eaa70c08d5f5c1e54d48d0f2baed}{State\+Space\+Controller} (std\+::string formatted\+Data\+File\+Path)
+\begin{DoxyCompactList}\small\item\em Constructor using generated controller data file. \end{DoxyCompactList}\item 
+\hyperlink{classStateSpaceController_a7bd95b4727613f5ea3f2a3b1c0321cc3}{State\+Space\+Controller} (\hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$ const \&other)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classStateSpaceController_adfc0f7afd0480726658bc675d5c4c8fe}\label{classStateSpaceController_adfc0f7afd0480726658bc675d5c4c8fe}} 
+virtual \hyperlink{classStateSpaceController_adfc0f7afd0480726658bc675d5c4c8fe}{$\sim$\+State\+Space\+Controller} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \hyperlink{classStateSpaceController_a6884754d53bc98c247ac4dd1f39be2ec}{load\+Controller\+Data} (std\+::string formatted\+Data\+File\+Path)
+\begin{DoxyCompactList}\small\item\em Modifies the controller from a controller data file. \end{DoxyCompactList}\item 
+\hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$ \& \hyperlink{classStateSpaceController_ade470a9ad99f273afea7b938560c4f88}{operator=} (const \hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$ \&controller)
+\begin{DoxyCompactList}\small\item\em = operator. \end{DoxyCompactList}\item 
+std\+::vector$<$ T $>$ \hyperlink{classStateSpaceController_a007985a139e8946e1f61e5e402d81d2e}{current\+Output} (const std\+::vector$<$ T $>$ \&e\+\_\+i)
+\begin{DoxyCompactList}\small\item\em Computes the current controller output with the error vector and increments time. \end{DoxyCompactList}\item 
+std\+::vector$<$ T $>$ \hyperlink{classStateSpaceController_a00b5627d37939d059112a16cf1adf7c9}{current\+Output} (const std\+::vector$<$ T $>$ \&e\+\_\+i, const std\+::vector$<$ T $>$ \&u\+\_\+min, const std\+::vector$<$ T $>$ \&u\+\_\+max)
+\begin{DoxyCompactList}\small\item\em Computes the current controller output with the error vector, applies a saturation and increments time. \end{DoxyCompactList}\item 
+std\+::vector$<$ T $>$ \hyperlink{classStateSpaceController_adb5f9f36e7ccffe8037b84baa457cbac}{current\+Output} (const std\+::vector$<$ T $>$ \&e\+\_\+i, const T \&u\+\_\+min, const T \&u\+\_\+max)
+\begin{DoxyCompactList}\small\item\em Computes the current controller output with the error vector, applies a saturation and increments time. \end{DoxyCompactList}\item 
+std\+::vector$<$ T $>$ \hyperlink{classStateSpaceController_a9cc4af00ba51e6043ccc5666ada85353}{current\+Output} (const std\+::vector$<$ T $>$ \&r\+\_\+i, const std\+::vector$<$ T $>$ \&y\+\_\+i)
+\begin{DoxyCompactList}\small\item\em Computes the current controller output with the reference vector and the plant output vector and increments time. \end{DoxyCompactList}\item 
+std\+::vector$<$ T $>$ \hyperlink{classStateSpaceController_a52ad5f8c8e95ee2a4235e521aec815d2}{current\+Output} (const std\+::vector$<$ T $>$ \&r\+\_\+i, const std\+::vector$<$ T $>$ \&y\+\_\+i, const std\+::vector$<$ T $>$ \&u\+\_\+min, const std\+::vector$<$ T $>$ \&u\+\_\+max)
+\begin{DoxyCompactList}\small\item\em Computes the current controller output with the reference vector and the plant output vector, applies a saturation and increments time. \end{DoxyCompactList}\item 
+std\+::vector$<$ T $>$ \hyperlink{classStateSpaceController_a3aefff5d3b55ef64241e3779323fa18e}{current\+Output} (const std\+::vector$<$ T $>$ \&r\+\_\+i, const std\+::vector$<$ T $>$ \&y\+\_\+i, const T \&u\+\_\+min, const T \&u\+\_\+max)
+\begin{DoxyCompactList}\small\item\em Computes the current controller output with the reference vector and the plant output vector, applies a saturation and increments time. \end{DoxyCompactList}\item 
+\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ \hyperlink{classStateSpaceController_a8d77d03a26c8bfa9bbde672431f7d5ec}{getA} () const
+\item 
+void \hyperlink{classStateSpaceController_a189d9fcd45640e9cfcede5b7448a20d4}{setA} (\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ A)
+\item 
+\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ \hyperlink{classStateSpaceController_a6435a06adbe5654d2fff6923da41db0c}{getB} () const
+\item 
+void \hyperlink{classStateSpaceController_ad23bd2d879123819b605bc10f668e95f}{setB} (\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ B)
+\item 
+\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ \hyperlink{classStateSpaceController_a2dd0a3e589883cbefa64117db401eb60}{getC} () const
+\item 
+void \hyperlink{classStateSpaceController_a753448d4c082e3d794d4186589d4951b}{setC} (\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ C)
+\item 
+\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ \hyperlink{classStateSpaceController_a7f0850ef94f5660a41101cf2fb5221ba}{getD} () const
+\item 
+void \hyperlink{classStateSpaceController_aafe010871545918c95d15fd9320593aa}{setD} (\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ D)
+\item 
+float \hyperlink{classStateSpaceController_acc70705c898b1338346b63e83ea4fe2a}{get\+Time\+Step} () const
+\item 
+void \hyperlink{classStateSpaceController_a2e3ce5df26ef4e0d89c7ff8668a6d5c5}{set\+Time\+Step} (const float t\+\_\+s)
+\item 
+float \hyperlink{classStateSpaceController_a6bb6da64c47f0c54dd1de17030f694a4}{get\+Time} () const
+\item 
+unsigned int \hyperlink{classStateSpaceController_ae60e8d45a68c0510a3b9b1f9fef144bb}{get\+Nx} () const
+\item 
+unsigned int \hyperlink{classStateSpaceController_a0fac286142187799c135d236f389090d}{get\+Ne} () const
+\item 
+unsigned int \hyperlink{classStateSpaceController_a05e9deaeb91afc5e2a2009768e72850e}{get\+Nu} () const
+\item 
+std\+::vector$<$ T $>$ \hyperlink{classStateSpaceController_a0d7bd27e0139221d7b2de5e7e8830d98}{get\+X\+\_\+i} () const
+\item 
+void \hyperlink{classStateSpaceController_a3a32ed909b03a681e9c9a04bff3ae45d}{print\+State\+Space} () const
+\begin{DoxyCompactList}\small\item\em Prints the state space representation of the \hyperlink{classStateSpaceController}{State\+Space\+Controller} object. \end{DoxyCompactList}\item 
+void \hyperlink{classStateSpaceController_aeded9d7ac25593444de4448a4369064d}{print\+State} () const
+\begin{DoxyCompactList}\small\item\em Prints the current state of the \hyperlink{classStateSpaceController}{State\+Space\+Controller} object. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classStateSpaceController_a40a127a65a4ac83f8390ce28cd246d28}{get\+State\+Space} () const
+\begin{DoxyCompactList}\small\item\em Gives the state space representation of the \hyperlink{classStateSpaceController}{State\+Space\+Controller} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classStateSpaceController_a188c3a29e1f2a0dfe25eb3724e402f92}\label{classStateSpaceController_a188c3a29e1f2a0dfe25eb3724e402f92}} 
+void \hyperlink{classStateSpaceController_a188c3a29e1f2a0dfe25eb3724e402f92}{reset} ()
+\begin{DoxyCompactList}\small\item\em Resets time and state vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classStateSpaceController_a5074256f03f8a541cc74bb28a247244b}\label{classStateSpaceController_a5074256f03f8a541cc74bb28a247244b}} 
+static void \hyperlink{classStateSpaceController_a5074256f03f8a541cc74bb28a247244b}{help} ()
+\begin{DoxyCompactList}\small\item\em Display the \hyperlink{classStateSpaceController}{State\+Space\+Controller} class help. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classStateSpaceController_a8b9390481cac910d97a8a072d8a55929}\label{classStateSpaceController_a8b9390481cac910d97a8a072d8a55929}} 
+void \hyperlink{classStateSpaceController_a8b9390481cac910d97a8a072d8a55929}{next\+State} ()
+\begin{DoxyCompactList}\small\item\em Computes the next state vector value and increments time. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classStateSpaceController_a57922a81c4b76cd435fed41fa235b782}\label{classStateSpaceController_a57922a81c4b76cd435fed41fa235b782}} 
+void \hyperlink{classStateSpaceController_a57922a81c4b76cd435fed41fa235b782}{current\+Error} ()
+\begin{DoxyCompactList}\small\item\em Computes the current error vector from reference vector and plant output vector. \end{DoxyCompactList}\item 
+void \hyperlink{classStateSpaceController_a865cbded7c2a220adcbfec1d6caea616}{saturation} (const std\+::vector$<$ T $>$ \&min, const std\+::vector$<$ T $>$ \&max)
+\begin{DoxyCompactList}\small\item\em Applies a saturation on the controller output vector. \end{DoxyCompactList}\item 
+void \hyperlink{classStateSpaceController_adf60d82cf62f5cfcf77ca80b294599e5}{saturation} (const T \&u\+\_\+min, const T \&u\+\_\+max)
+\begin{DoxyCompactList}\small\item\em Applies a saturation on the controller output vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classStateSpaceController_ad7269044d376a39889d5f2b0478bd74b}\label{classStateSpaceController_ad7269044d376a39889d5f2b0478bd74b}} 
+\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ \hyperlink{classStateSpaceController_ad7269044d376a39889d5f2b0478bd74b}{m\+\_\+A}
+\begin{DoxyCompactList}\small\item\em Controller A matrix in state space representation. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classStateSpaceController_a3bc4a44bd92c7ffc970a65b90a626e1a}\label{classStateSpaceController_a3bc4a44bd92c7ffc970a65b90a626e1a}} 
+\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ \hyperlink{classStateSpaceController_a3bc4a44bd92c7ffc970a65b90a626e1a}{m\+\_\+B}
+\begin{DoxyCompactList}\small\item\em Controller B matrix in state space representation. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classStateSpaceController_a33fd292f395c12a2fca3a6d0f7ef77a0}\label{classStateSpaceController_a33fd292f395c12a2fca3a6d0f7ef77a0}} 
+\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ \hyperlink{classStateSpaceController_a33fd292f395c12a2fca3a6d0f7ef77a0}{m\+\_\+C}
+\begin{DoxyCompactList}\small\item\em Controller C matrix in state space representation. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classStateSpaceController_a63bf0b147c6b9eedb0b062dea75b67ac}\label{classStateSpaceController_a63bf0b147c6b9eedb0b062dea75b67ac}} 
+\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ \hyperlink{classStateSpaceController_a63bf0b147c6b9eedb0b062dea75b67ac}{m\+\_\+D}
+\begin{DoxyCompactList}\small\item\em Controller D matrix in state space representation. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classStateSpaceController_a6bac91eca3b49d992f63044e67ba1029}\label{classStateSpaceController_a6bac91eca3b49d992f63044e67ba1029}} 
+float \hyperlink{classStateSpaceController_a6bac91eca3b49d992f63044e67ba1029}{m\+\_\+t\+\_\+s}
+\begin{DoxyCompactList}\small\item\em Time step of the controller (seconds). \end{DoxyCompactList}\item 
+unsigned int \hyperlink{classStateSpaceController_acdeb5cd37612bfb9553b5d726108c4df}{m\+\_\+i}
+\begin{DoxyCompactList}\small\item\em Indice of the current state. \end{DoxyCompactList}\item 
+float \hyperlink{classStateSpaceController_ab81980fe7a53ffa3d7269856b2729573}{m\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Current time (seconds). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classStateSpaceController_a63b95d1a14d33d4a7671f57521057c4f}\label{classStateSpaceController_a63b95d1a14d33d4a7671f57521057c4f}} 
+unsigned int \hyperlink{classStateSpaceController_a63b95d1a14d33d4a7671f57521057c4f}{m\+\_\+nx}
+\begin{DoxyCompactList}\small\item\em State vector dimension. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classStateSpaceController_afc197780314b775404001f2a365f93d2}\label{classStateSpaceController_afc197780314b775404001f2a365f93d2}} 
+unsigned int \hyperlink{classStateSpaceController_afc197780314b775404001f2a365f93d2}{m\+\_\+ne}
+\begin{DoxyCompactList}\small\item\em Error vector dimension. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classStateSpaceController_a35ba10ea16df2f78eface03879a1669b}\label{classStateSpaceController_a35ba10ea16df2f78eface03879a1669b}} 
+unsigned int \hyperlink{classStateSpaceController_a35ba10ea16df2f78eface03879a1669b}{m\+\_\+nu}
+\begin{DoxyCompactList}\small\item\em Controller output vector dimension. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classStateSpaceController_a87e713818628a55b12123cc60ef3c8f8}\label{classStateSpaceController_a87e713818628a55b12123cc60ef3c8f8}} 
+std\+::vector$<$ T $>$ \hyperlink{classStateSpaceController_a87e713818628a55b12123cc60ef3c8f8}{m\+\_\+x\+\_\+i}
+\begin{DoxyCompactList}\small\item\em Current state vector. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classStateSpaceController_a479b99beec3d22251af6083ff4d81b02}\label{classStateSpaceController_a479b99beec3d22251af6083ff4d81b02}} 
+std\+::vector$<$ T $>$ \hyperlink{classStateSpaceController_a479b99beec3d22251af6083ff4d81b02}{m\+\_\+x\+\_\+ib}
+\begin{DoxyCompactList}\small\item\em Last state vector. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classStateSpaceController_a3fd7306d5a5b353448d3a45b38fa4be7}\label{classStateSpaceController_a3fd7306d5a5b353448d3a45b38fa4be7}} 
+std\+::vector$<$ T $>$ \hyperlink{classStateSpaceController_a3fd7306d5a5b353448d3a45b38fa4be7}{m\+\_\+r\+\_\+i}
+\begin{DoxyCompactList}\small\item\em Current reference signal vector. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classStateSpaceController_ada86ae37d4193911fc94c236d4f20f17}\label{classStateSpaceController_ada86ae37d4193911fc94c236d4f20f17}} 
+std\+::vector$<$ T $>$ \hyperlink{classStateSpaceController_ada86ae37d4193911fc94c236d4f20f17}{m\+\_\+y\+\_\+i}
+\begin{DoxyCompactList}\small\item\em Current global plant output vector. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classStateSpaceController_a78a5ea201bd2c89053941541ee442194}\label{classStateSpaceController_a78a5ea201bd2c89053941541ee442194}} 
+std\+::vector$<$ T $>$ \hyperlink{classStateSpaceController_a78a5ea201bd2c89053941541ee442194}{m\+\_\+e\+\_\+i}
+\begin{DoxyCompactList}\small\item\em Current error vector. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classStateSpaceController_ac984cbf93caa86eea3d7670c882d552a}\label{classStateSpaceController_ac984cbf93caa86eea3d7670c882d552a}} 
+std\+::vector$<$ T $>$ \hyperlink{classStateSpaceController_ac984cbf93caa86eea3d7670c882d552a}{m\+\_\+u\+\_\+i}
+\begin{DoxyCompactList}\small\item\em Current controller output vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class State\+Space\+Controller$<$ T $>$}
+
+General State-\/\+Space Controller class. 
+
+See \char`\"{}example\+\_\+\+State\+Space\+Controller.\+cpp.\+example\char`\"{} to have an implementation example.
+
+Assuming K is the controller\+: \begin{DoxyVerb} K:
+
+     | x_{i+1} = A*x_i + B*e_i
+     |     u_i = C*x_i + D*e_i
+
+         with e_i = r_i - y_i  
+\end{DoxyVerb}
+
+
+\hyperlink{classQSMatrix}{Q\+S\+Matrix} class can be totally unused by user if a data file is generated to import the controller matrices. See \hyperlink{classStateSpaceController_a6884754d53bc98c247ac4dd1f39be2ec}{load\+Controller\+Data()} or \hyperlink{classStateSpaceController_aa44a3db59ff8e25bd03d9242356a6f10}{State\+Space\+Controller\+::\+State\+Space\+Controller()} for file format and more details.
+
+This class can be used as a state space controller alone or coupled with a comparator to generate the error vector by using overloaded member functions. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classStateSpaceController_aa44a3db59ff8e25bd03d9242356a6f10}\label{classStateSpaceController_aa44a3db59ff8e25bd03d9242356a6f10}} 
+\index{State\+Space\+Controller@{State\+Space\+Controller}!State\+Space\+Controller@{State\+Space\+Controller}}
+\index{State\+Space\+Controller@{State\+Space\+Controller}!State\+Space\+Controller@{State\+Space\+Controller}}
+\subsubsection{\texorpdfstring{State\+Space\+Controller()}{StateSpaceController()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$\+::\hyperlink{classStateSpaceController}{State\+Space\+Controller} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default constructor. 
+
+Construct a \hyperlink{classStateSpaceController}{State\+Space\+Controller} object with basic matrices. \mbox{\Hypertarget{classStateSpaceController_aa2541f05f5096b2793ca929b47bd4db7}\label{classStateSpaceController_aa2541f05f5096b2793ca929b47bd4db7}} 
+\index{State\+Space\+Controller@{State\+Space\+Controller}!State\+Space\+Controller@{State\+Space\+Controller}}
+\index{State\+Space\+Controller@{State\+Space\+Controller}!State\+Space\+Controller@{State\+Space\+Controller}}
+\subsubsection{\texorpdfstring{State\+Space\+Controller()}{StateSpaceController()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$\+::\hyperlink{classStateSpaceController}{State\+Space\+Controller} (\begin{DoxyParamCaption}\item[{\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$}]{A,  }\item[{\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$}]{B,  }\item[{\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$}]{C,  }\item[{\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$}]{D,  }\item[{const float}]{t\+\_\+s }\end{DoxyParamCaption})}
+
+
+
+Constructor using user-\/generated \hyperlink{classQSMatrix}{Q\+S\+Matrix} matrices. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & Controller A matrix in state space representation. \\
+\hline
+{\em B} & Controller B matrix in state space representation. \\
+\hline
+{\em C} & Controller C matrix in state space representation. \\
+\hline
+{\em D} & Controller D matrix in state space representation. \\
+\hline
+{\em t\+\_\+s} & Controller time step (seconds). \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classStateSpaceController_a95b2eaa70c08d5f5c1e54d48d0f2baed}\label{classStateSpaceController_a95b2eaa70c08d5f5c1e54d48d0f2baed}} 
+\index{State\+Space\+Controller@{State\+Space\+Controller}!State\+Space\+Controller@{State\+Space\+Controller}}
+\index{State\+Space\+Controller@{State\+Space\+Controller}!State\+Space\+Controller@{State\+Space\+Controller}}
+\subsubsection{\texorpdfstring{State\+Space\+Controller()}{StateSpaceController()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$\+::\hyperlink{classStateSpaceController}{State\+Space\+Controller} (\begin{DoxyParamCaption}\item[{std\+::string}]{formatted\+Data\+File\+Path }\end{DoxyParamCaption})}
+
+
+
+Constructor using generated controller data file. 
+
+The file has to be formatted as follows\+: \begin{DoxyVerb}-------FILE_BEGIN-------
+Time step value (seconds) (example: 0.1)
+State vector dimension nx
+Error vector dimension ne (example: 2)
+Controller output vector dimension nu
+A[0,0] value (example: 12.354)
+...
+A[0,nx]
+A[1,0]
+...
+A[1,nx]
+...
+A[nx,nx]
+B[0,0] value (example: 12.354)
+...
+B[0,ne]
+B[1,0]
+...
+B[1,ne]
+...
+B[nx,ne]
+C[0,0] value (example: 12.354)
+...
+C[0,nx]
+C[1,0]
+...
+C[1,nx]
+...
+C[nu,nx]
+D[0,0] value (example: 12.354)
+...
+D[0,ne]
+D[1,0]
+...
+D[1,ne]
+...
+D[nu,ne]
+-------FILE_END-------
+\end{DoxyVerb}
+ 
+\begin{DoxyParams}{Parameters}
+{\em formatted\+Data\+File\+Path} & Path of the controller data file. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classStateSpaceController_a7bd95b4727613f5ea3f2a3b1c0321cc3}\label{classStateSpaceController_a7bd95b4727613f5ea3f2a3b1c0321cc3}} 
+\index{State\+Space\+Controller@{State\+Space\+Controller}!State\+Space\+Controller@{State\+Space\+Controller}}
+\index{State\+Space\+Controller@{State\+Space\+Controller}!State\+Space\+Controller@{State\+Space\+Controller}}
+\subsubsection{\texorpdfstring{State\+Space\+Controller()}{StateSpaceController()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$\+::\hyperlink{classStateSpaceController}{State\+Space\+Controller} (\begin{DoxyParamCaption}\item[{\hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$ const \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Copy constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & Another \hyperlink{classStateSpaceController}{State\+Space\+Controller} object. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classStateSpaceController_a007985a139e8946e1f61e5e402d81d2e}\label{classStateSpaceController_a007985a139e8946e1f61e5e402d81d2e}} 
+\index{State\+Space\+Controller@{State\+Space\+Controller}!current\+Output@{current\+Output}}
+\index{current\+Output@{current\+Output}!State\+Space\+Controller@{State\+Space\+Controller}}
+\subsubsection{\texorpdfstring{current\+Output()}{currentOutput()}\hspace{0.1cm}{\footnotesize\ttfamily [1/6]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::vector$<$ T $>$ \hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$\+::current\+Output (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ T $>$ \&}]{e\+\_\+i }\end{DoxyParamCaption})}
+
+
+
+Computes the current controller output with the error vector and increments time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e\+\_\+i} & Current error vector. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Controller output vector. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classStateSpaceController_a00b5627d37939d059112a16cf1adf7c9}\label{classStateSpaceController_a00b5627d37939d059112a16cf1adf7c9}} 
+\index{State\+Space\+Controller@{State\+Space\+Controller}!current\+Output@{current\+Output}}
+\index{current\+Output@{current\+Output}!State\+Space\+Controller@{State\+Space\+Controller}}
+\subsubsection{\texorpdfstring{current\+Output()}{currentOutput()}\hspace{0.1cm}{\footnotesize\ttfamily [2/6]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::vector$<$ T $>$ \hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$\+::current\+Output (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ T $>$ \&}]{e\+\_\+i,  }\item[{const std\+::vector$<$ T $>$ \&}]{u\+\_\+min,  }\item[{const std\+::vector$<$ T $>$ \&}]{u\+\_\+max }\end{DoxyParamCaption})}
+
+
+
+Computes the current controller output with the error vector, applies a saturation and increments time. 
+
+Saturation vectors are used to tune each controller output. 
+\begin{DoxyParams}{Parameters}
+{\em e\+\_\+i} & Current error vector. \\
+\hline
+{\em u\+\_\+min} & Bottom saturation vector. \\
+\hline
+{\em u\+\_\+max} & Top saturation vector. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Controller output vector. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classStateSpaceController_adb5f9f36e7ccffe8037b84baa457cbac}\label{classStateSpaceController_adb5f9f36e7ccffe8037b84baa457cbac}} 
+\index{State\+Space\+Controller@{State\+Space\+Controller}!current\+Output@{current\+Output}}
+\index{current\+Output@{current\+Output}!State\+Space\+Controller@{State\+Space\+Controller}}
+\subsubsection{\texorpdfstring{current\+Output()}{currentOutput()}\hspace{0.1cm}{\footnotesize\ttfamily [3/6]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::vector$<$ T $>$ \hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$\+::current\+Output (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ T $>$ \&}]{e\+\_\+i,  }\item[{const T \&}]{u\+\_\+min,  }\item[{const T \&}]{u\+\_\+max }\end{DoxyParamCaption})}
+
+
+
+Computes the current controller output with the error vector, applies a saturation and increments time. 
+
+Unique saturation values are used to tune all controller outputs at once. 
+\begin{DoxyParams}{Parameters}
+{\em e\+\_\+i} & Current error vector. \\
+\hline
+{\em u\+\_\+min} & Bottom saturation value. \\
+\hline
+{\em u\+\_\+max} & Top saturation value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Controller output vector. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classStateSpaceController_a9cc4af00ba51e6043ccc5666ada85353}\label{classStateSpaceController_a9cc4af00ba51e6043ccc5666ada85353}} 
+\index{State\+Space\+Controller@{State\+Space\+Controller}!current\+Output@{current\+Output}}
+\index{current\+Output@{current\+Output}!State\+Space\+Controller@{State\+Space\+Controller}}
+\subsubsection{\texorpdfstring{current\+Output()}{currentOutput()}\hspace{0.1cm}{\footnotesize\ttfamily [4/6]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::vector$<$ T $>$ \hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$\+::current\+Output (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ T $>$ \&}]{r\+\_\+i,  }\item[{const std\+::vector$<$ T $>$ \&}]{y\+\_\+i }\end{DoxyParamCaption})}
+
+
+
+Computes the current controller output with the reference vector and the plant output vector and increments time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r\+\_\+i} & Current reference vector. \\
+\hline
+{\em y\+\_\+i} & Current plant output vector. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Controller output vector. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classStateSpaceController_a52ad5f8c8e95ee2a4235e521aec815d2}\label{classStateSpaceController_a52ad5f8c8e95ee2a4235e521aec815d2}} 
+\index{State\+Space\+Controller@{State\+Space\+Controller}!current\+Output@{current\+Output}}
+\index{current\+Output@{current\+Output}!State\+Space\+Controller@{State\+Space\+Controller}}
+\subsubsection{\texorpdfstring{current\+Output()}{currentOutput()}\hspace{0.1cm}{\footnotesize\ttfamily [5/6]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::vector$<$ T $>$ \hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$\+::current\+Output (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ T $>$ \&}]{r\+\_\+i,  }\item[{const std\+::vector$<$ T $>$ \&}]{y\+\_\+i,  }\item[{const std\+::vector$<$ T $>$ \&}]{u\+\_\+min,  }\item[{const std\+::vector$<$ T $>$ \&}]{u\+\_\+max }\end{DoxyParamCaption})}
+
+
+
+Computes the current controller output with the reference vector and the plant output vector, applies a saturation and increments time. 
+
+Saturation vectors are used to tune each controller output. 
+\begin{DoxyParams}{Parameters}
+{\em r\+\_\+i} & Current reference vector. \\
+\hline
+{\em y\+\_\+i} & Current plant output vector. \\
+\hline
+{\em u\+\_\+min} & Bottom saturation vector. \\
+\hline
+{\em u\+\_\+max} & Top saturation vector. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Controller output vector. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classStateSpaceController_a3aefff5d3b55ef64241e3779323fa18e}\label{classStateSpaceController_a3aefff5d3b55ef64241e3779323fa18e}} 
+\index{State\+Space\+Controller@{State\+Space\+Controller}!current\+Output@{current\+Output}}
+\index{current\+Output@{current\+Output}!State\+Space\+Controller@{State\+Space\+Controller}}
+\subsubsection{\texorpdfstring{current\+Output()}{currentOutput()}\hspace{0.1cm}{\footnotesize\ttfamily [6/6]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::vector$<$ T $>$ \hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$\+::current\+Output (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ T $>$ \&}]{r\+\_\+i,  }\item[{const std\+::vector$<$ T $>$ \&}]{y\+\_\+i,  }\item[{const T \&}]{u\+\_\+min,  }\item[{const T \&}]{u\+\_\+max }\end{DoxyParamCaption})}
+
+
+
+Computes the current controller output with the reference vector and the plant output vector, applies a saturation and increments time. 
+
+Unique saturation values are used to tune all controller outputs at once. 
+\begin{DoxyParams}{Parameters}
+{\em r\+\_\+i} & Current reference vector. \\
+\hline
+{\em y\+\_\+i} & Current plant output vector. \\
+\hline
+{\em u\+\_\+min} & Bottom saturation value. \\
+\hline
+{\em u\+\_\+max} & Top saturation value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Controller output vector. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classStateSpaceController_a8d77d03a26c8bfa9bbde672431f7d5ec}\label{classStateSpaceController_a8d77d03a26c8bfa9bbde672431f7d5ec}} 
+\index{State\+Space\+Controller@{State\+Space\+Controller}!getA@{getA}}
+\index{getA@{getA}!State\+Space\+Controller@{State\+Space\+Controller}}
+\subsubsection{\texorpdfstring{get\+A()}{getA()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ \hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$\+::getA (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+Controller A matrix in state space representation. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classStateSpaceController_a6435a06adbe5654d2fff6923da41db0c}\label{classStateSpaceController_a6435a06adbe5654d2fff6923da41db0c}} 
+\index{State\+Space\+Controller@{State\+Space\+Controller}!getB@{getB}}
+\index{getB@{getB}!State\+Space\+Controller@{State\+Space\+Controller}}
+\subsubsection{\texorpdfstring{get\+B()}{getB()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ \hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$\+::getB (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+Controller B matrix in state space representation. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classStateSpaceController_a2dd0a3e589883cbefa64117db401eb60}\label{classStateSpaceController_a2dd0a3e589883cbefa64117db401eb60}} 
+\index{State\+Space\+Controller@{State\+Space\+Controller}!getC@{getC}}
+\index{getC@{getC}!State\+Space\+Controller@{State\+Space\+Controller}}
+\subsubsection{\texorpdfstring{get\+C()}{getC()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ \hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$\+::getC (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+Controller C matrix in state space representation. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classStateSpaceController_a7f0850ef94f5660a41101cf2fb5221ba}\label{classStateSpaceController_a7f0850ef94f5660a41101cf2fb5221ba}} 
+\index{State\+Space\+Controller@{State\+Space\+Controller}!getD@{getD}}
+\index{getD@{getD}!State\+Space\+Controller@{State\+Space\+Controller}}
+\subsubsection{\texorpdfstring{get\+D()}{getD()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ \hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$\+::getD (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+Controller D matrix in state space representation. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classStateSpaceController_a0fac286142187799c135d236f389090d}\label{classStateSpaceController_a0fac286142187799c135d236f389090d}} 
+\index{State\+Space\+Controller@{State\+Space\+Controller}!get\+Ne@{get\+Ne}}
+\index{get\+Ne@{get\+Ne}!State\+Space\+Controller@{State\+Space\+Controller}}
+\subsubsection{\texorpdfstring{get\+Ne()}{getNe()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+unsigned int \hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$\+::get\+Ne (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+Error vector dimension. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classStateSpaceController_a05e9deaeb91afc5e2a2009768e72850e}\label{classStateSpaceController_a05e9deaeb91afc5e2a2009768e72850e}} 
+\index{State\+Space\+Controller@{State\+Space\+Controller}!get\+Nu@{get\+Nu}}
+\index{get\+Nu@{get\+Nu}!State\+Space\+Controller@{State\+Space\+Controller}}
+\subsubsection{\texorpdfstring{get\+Nu()}{getNu()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+unsigned int \hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$\+::get\+Nu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+Controller output vector dimension. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classStateSpaceController_ae60e8d45a68c0510a3b9b1f9fef144bb}\label{classStateSpaceController_ae60e8d45a68c0510a3b9b1f9fef144bb}} 
+\index{State\+Space\+Controller@{State\+Space\+Controller}!get\+Nx@{get\+Nx}}
+\index{get\+Nx@{get\+Nx}!State\+Space\+Controller@{State\+Space\+Controller}}
+\subsubsection{\texorpdfstring{get\+Nx()}{getNx()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+unsigned int \hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$\+::get\+Nx (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+State vector dimension. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classStateSpaceController_a40a127a65a4ac83f8390ce28cd246d28}\label{classStateSpaceController_a40a127a65a4ac83f8390ce28cd246d28}} 
+\index{State\+Space\+Controller@{State\+Space\+Controller}!get\+State\+Space@{get\+State\+Space}}
+\index{get\+State\+Space@{get\+State\+Space}!State\+Space\+Controller@{State\+Space\+Controller}}
+\subsubsection{\texorpdfstring{get\+State\+Space()}{getStateSpace()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::string \hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$\+::get\+State\+Space (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gives the state space representation of the \hyperlink{classStateSpaceController}{State\+Space\+Controller} object. 
+
+\begin{DoxyReturn}{Returns}
+String that contains the controller time step and all state matrices. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classStateSpaceController_a6bb6da64c47f0c54dd1de17030f694a4}\label{classStateSpaceController_a6bb6da64c47f0c54dd1de17030f694a4}} 
+\index{State\+Space\+Controller@{State\+Space\+Controller}!get\+Time@{get\+Time}}
+\index{get\+Time@{get\+Time}!State\+Space\+Controller@{State\+Space\+Controller}}
+\subsubsection{\texorpdfstring{get\+Time()}{getTime()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+float \hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$\+::get\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+Current time (seconds). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classStateSpaceController_acc70705c898b1338346b63e83ea4fe2a}\label{classStateSpaceController_acc70705c898b1338346b63e83ea4fe2a}} 
+\index{State\+Space\+Controller@{State\+Space\+Controller}!get\+Time\+Step@{get\+Time\+Step}}
+\index{get\+Time\+Step@{get\+Time\+Step}!State\+Space\+Controller@{State\+Space\+Controller}}
+\subsubsection{\texorpdfstring{get\+Time\+Step()}{getTimeStep()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+float \hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$\+::get\+Time\+Step (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+Controller time step (seconds). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classStateSpaceController_a0d7bd27e0139221d7b2de5e7e8830d98}\label{classStateSpaceController_a0d7bd27e0139221d7b2de5e7e8830d98}} 
+\index{State\+Space\+Controller@{State\+Space\+Controller}!get\+X\+\_\+i@{get\+X\+\_\+i}}
+\index{get\+X\+\_\+i@{get\+X\+\_\+i}!State\+Space\+Controller@{State\+Space\+Controller}}
+\subsubsection{\texorpdfstring{get\+X\+\_\+i()}{getX\_i()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::vector$<$ T $>$ \hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$\+::get\+X\+\_\+i (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+Current state vector. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classStateSpaceController_a6884754d53bc98c247ac4dd1f39be2ec}\label{classStateSpaceController_a6884754d53bc98c247ac4dd1f39be2ec}} 
+\index{State\+Space\+Controller@{State\+Space\+Controller}!load\+Controller\+Data@{load\+Controller\+Data}}
+\index{load\+Controller\+Data@{load\+Controller\+Data}!State\+Space\+Controller@{State\+Space\+Controller}}
+\subsubsection{\texorpdfstring{load\+Controller\+Data()}{loadControllerData()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$\+::load\+Controller\+Data (\begin{DoxyParamCaption}\item[{std\+::string}]{formatted\+Data\+File\+Path }\end{DoxyParamCaption})}
+
+
+
+Modifies the controller from a controller data file. 
+
+The file has to be formatted as follows\+: \begin{DoxyVerb}-------FILE_BEGIN-------
+Time step value (seconds) (example: 0.1)
+State vector dimension nx
+Error vector dimension ne (example: 2)
+Controller output vector dimension nu
+A[0,0] value (example: 12.354)
+...
+A[0,nx]
+A[1,0]
+...
+A[1,nx]
+...
+A[nx,nx]
+B[0,0] value (example: 12.354)
+...
+B[0,ne]
+B[1,0]
+...
+B[1,ne]
+...
+B[nx,ne]
+C[0,0] value (example: 12.354)
+...
+C[0,nx]
+C[1,0]
+...
+C[1,nx]
+...
+C[nu,nx]
+D[0,0] value (example: 12.354)
+...
+D[0,ne]
+D[1,0]
+...
+D[1,ne]
+...
+D[nu,ne]
+-------FILE_END-------
+\end{DoxyVerb}
+ 
+\begin{DoxyParams}{Parameters}
+{\em formatted\+Data\+File\+Path} & Path of the controller data file. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classStateSpaceController_ade470a9ad99f273afea7b938560c4f88}\label{classStateSpaceController_ade470a9ad99f273afea7b938560c4f88}} 
+\index{State\+Space\+Controller@{State\+Space\+Controller}!operator=@{operator=}}
+\index{operator=@{operator=}!State\+Space\+Controller@{State\+Space\+Controller}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$ \& \hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$ \&}]{controller }\end{DoxyParamCaption})}
+
+
+
+= operator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em controller} & Another \hyperlink{classStateSpaceController}{State\+Space\+Controller} object. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classStateSpaceController_aeded9d7ac25593444de4448a4369064d}\label{classStateSpaceController_aeded9d7ac25593444de4448a4369064d}} 
+\index{State\+Space\+Controller@{State\+Space\+Controller}!print\+State@{print\+State}}
+\index{print\+State@{print\+State}!State\+Space\+Controller@{State\+Space\+Controller}}
+\subsubsection{\texorpdfstring{print\+State()}{printState()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$\+::print\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Prints the current state of the \hyperlink{classStateSpaceController}{State\+Space\+Controller} object. 
+
+Prints the current time (seconds), the reference, plant output, error, controller output and state vector of the controller.
+
+Prints a header if this function is called when the current indice is equal to 1. \mbox{\Hypertarget{classStateSpaceController_a3a32ed909b03a681e9c9a04bff3ae45d}\label{classStateSpaceController_a3a32ed909b03a681e9c9a04bff3ae45d}} 
+\index{State\+Space\+Controller@{State\+Space\+Controller}!print\+State\+Space@{print\+State\+Space}}
+\index{print\+State\+Space@{print\+State\+Space}!State\+Space\+Controller@{State\+Space\+Controller}}
+\subsubsection{\texorpdfstring{print\+State\+Space()}{printStateSpace()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$\+::print\+State\+Space (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Prints the state space representation of the \hyperlink{classStateSpaceController}{State\+Space\+Controller} object. 
+
+Prints the controller time step and all state matrices. \mbox{\Hypertarget{classStateSpaceController_a865cbded7c2a220adcbfec1d6caea616}\label{classStateSpaceController_a865cbded7c2a220adcbfec1d6caea616}} 
+\index{State\+Space\+Controller@{State\+Space\+Controller}!saturation@{saturation}}
+\index{saturation@{saturation}!State\+Space\+Controller@{State\+Space\+Controller}}
+\subsubsection{\texorpdfstring{saturation()}{saturation()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$\+::saturation (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ T $>$ \&}]{u\+\_\+min,  }\item[{const std\+::vector$<$ T $>$ \&}]{u\+\_\+max }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Applies a saturation on the controller output vector. 
+
+Saturation vectors are used to tune each controller output. 
+\begin{DoxyParams}{Parameters}
+{\em u\+\_\+min} & Bottom saturation vector. \\
+\hline
+{\em u\+\_\+max} & Top saturation vector. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classStateSpaceController_adf60d82cf62f5cfcf77ca80b294599e5}\label{classStateSpaceController_adf60d82cf62f5cfcf77ca80b294599e5}} 
+\index{State\+Space\+Controller@{State\+Space\+Controller}!saturation@{saturation}}
+\index{saturation@{saturation}!State\+Space\+Controller@{State\+Space\+Controller}}
+\subsubsection{\texorpdfstring{saturation()}{saturation()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$\+::saturation (\begin{DoxyParamCaption}\item[{const T \&}]{u\+\_\+min,  }\item[{const T \&}]{u\+\_\+max }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Applies a saturation on the controller output vector. 
+
+Unique saturation values are used to tune all controller outputs at once. 
+\begin{DoxyParams}{Parameters}
+{\em u\+\_\+min} & Bottom saturation value. \\
+\hline
+{\em u\+\_\+max} & Top saturation value. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classStateSpaceController_a189d9fcd45640e9cfcede5b7448a20d4}\label{classStateSpaceController_a189d9fcd45640e9cfcede5b7448a20d4}} 
+\index{State\+Space\+Controller@{State\+Space\+Controller}!setA@{setA}}
+\index{setA@{setA}!State\+Space\+Controller@{State\+Space\+Controller}}
+\subsubsection{\texorpdfstring{set\+A()}{setA()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$\+::setA (\begin{DoxyParamCaption}\item[{\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$}]{A }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & Controller A matrix in state space representation. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classStateSpaceController_ad23bd2d879123819b605bc10f668e95f}\label{classStateSpaceController_ad23bd2d879123819b605bc10f668e95f}} 
+\index{State\+Space\+Controller@{State\+Space\+Controller}!setB@{setB}}
+\index{setB@{setB}!State\+Space\+Controller@{State\+Space\+Controller}}
+\subsubsection{\texorpdfstring{set\+B()}{setB()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$\+::setB (\begin{DoxyParamCaption}\item[{\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$}]{B }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em B} & Controller B matrix in state space representation. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classStateSpaceController_a753448d4c082e3d794d4186589d4951b}\label{classStateSpaceController_a753448d4c082e3d794d4186589d4951b}} 
+\index{State\+Space\+Controller@{State\+Space\+Controller}!setC@{setC}}
+\index{setC@{setC}!State\+Space\+Controller@{State\+Space\+Controller}}
+\subsubsection{\texorpdfstring{set\+C()}{setC()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$\+::setC (\begin{DoxyParamCaption}\item[{\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$}]{C }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em C} & Controller C matrix in state space representation. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classStateSpaceController_aafe010871545918c95d15fd9320593aa}\label{classStateSpaceController_aafe010871545918c95d15fd9320593aa}} 
+\index{State\+Space\+Controller@{State\+Space\+Controller}!setD@{setD}}
+\index{setD@{setD}!State\+Space\+Controller@{State\+Space\+Controller}}
+\subsubsection{\texorpdfstring{set\+D()}{setD()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$\+::setD (\begin{DoxyParamCaption}\item[{\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$}]{D }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em D} & Controller D matrix in state space representation. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classStateSpaceController_a2e3ce5df26ef4e0d89c7ff8668a6d5c5}\label{classStateSpaceController_a2e3ce5df26ef4e0d89c7ff8668a6d5c5}} 
+\index{State\+Space\+Controller@{State\+Space\+Controller}!set\+Time\+Step@{set\+Time\+Step}}
+\index{set\+Time\+Step@{set\+Time\+Step}!State\+Space\+Controller@{State\+Space\+Controller}}
+\subsubsection{\texorpdfstring{set\+Time\+Step()}{setTimeStep()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$\+::set\+Time\+Step (\begin{DoxyParamCaption}\item[{const float}]{t\+\_\+s }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em t\+\_\+s} & Controller time step (seconds). \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classStateSpaceController_acdeb5cd37612bfb9553b5d726108c4df}\label{classStateSpaceController_acdeb5cd37612bfb9553b5d726108c4df}} 
+\index{State\+Space\+Controller@{State\+Space\+Controller}!m\+\_\+i@{m\+\_\+i}}
+\index{m\+\_\+i@{m\+\_\+i}!State\+Space\+Controller@{State\+Space\+Controller}}
+\subsubsection{\texorpdfstring{m\+\_\+i}{m\_i}}
+{\footnotesize\ttfamily template$<$typename T$>$ \\
+unsigned int \hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$\+::m\+\_\+i\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Indice of the current state. 
+
+Automatically incremented on each \hyperlink{classStateSpaceController_a007985a139e8946e1f61e5e402d81d2e}{State\+Space\+Controller\+::current\+Output()} call. \mbox{\Hypertarget{classStateSpaceController_ab81980fe7a53ffa3d7269856b2729573}\label{classStateSpaceController_ab81980fe7a53ffa3d7269856b2729573}} 
+\index{State\+Space\+Controller@{State\+Space\+Controller}!m\+\_\+t@{m\+\_\+t}}
+\index{m\+\_\+t@{m\+\_\+t}!State\+Space\+Controller@{State\+Space\+Controller}}
+\subsubsection{\texorpdfstring{m\+\_\+t}{m\_t}}
+{\footnotesize\ttfamily template$<$typename T$>$ \\
+float \hyperlink{classStateSpaceController}{State\+Space\+Controller}$<$ T $>$\+::m\+\_\+t\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Current time (seconds). 
+
+Automatically incremented on each \hyperlink{classStateSpaceController_a007985a139e8946e1f61e5e402d81d2e}{State\+Space\+Controller\+::current\+Output()} call. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\hyperlink{stateSpaceController_8h}{state\+Space\+Controller.\+h}\item 
+src/\hyperlink{stateSpaceController_8cpp}{state\+Space\+Controller.\+cpp}\end{DoxyCompactItemize}

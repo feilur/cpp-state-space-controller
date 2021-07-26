@@ -1,0 +1,113 @@
+\hypertarget{classQSMatrix}{}\section{Q\+S\+Matrix$<$ T $>$ Class Template Reference}
+\label{classQSMatrix}\index{Q\+S\+Matrix$<$ T $>$@{Q\+S\+Matrix$<$ T $>$}}
+
+
+Class for matrices and vectors computation.  
+
+
+
+
+{\ttfamily \#include $<$Q\+S\+Matrix.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classQSMatrix_a66d487621e45fec22c61bd50559fc03c}\label{classQSMatrix_a66d487621e45fec22c61bd50559fc03c}} 
+{\bfseries Q\+S\+Matrix} (unsigned \+\_\+rows, unsigned \+\_\+cols, const T \&\+\_\+initial)
+\item 
+\mbox{\Hypertarget{classQSMatrix_ad21ae4a20d9cb12732b0d09f33243670}\label{classQSMatrix_ad21ae4a20d9cb12732b0d09f33243670}} 
+{\bfseries Q\+S\+Matrix} (const \hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ \&rhs)
+\item 
+\mbox{\Hypertarget{classQSMatrix_ab3f16a01a06b684e0e145422ac0d1ba2}\label{classQSMatrix_ab3f16a01a06b684e0e145422ac0d1ba2}} 
+\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ \& {\bfseries operator=} (const \hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ \&rhs)
+\item 
+\mbox{\Hypertarget{classQSMatrix_ab317d80656300d78a8d4b4067ca8146a}\label{classQSMatrix_ab317d80656300d78a8d4b4067ca8146a}} 
+\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ {\bfseries operator+} (const \hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ \&rhs) const
+\item 
+\mbox{\Hypertarget{classQSMatrix_a6851aa8584d3d59c17a44b2c9c401b0c}\label{classQSMatrix_a6851aa8584d3d59c17a44b2c9c401b0c}} 
+\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ \& {\bfseries operator+=} (const \hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ \&rhs) const
+\item 
+\mbox{\Hypertarget{classQSMatrix_a573770f6adfb22b2ef9ec91a35e5f910}\label{classQSMatrix_a573770f6adfb22b2ef9ec91a35e5f910}} 
+\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ {\bfseries operator-\/} (const \hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ \&rhs) const
+\item 
+\mbox{\Hypertarget{classQSMatrix_a7c7990ef216782644d00e11d2dbfcaf6}\label{classQSMatrix_a7c7990ef216782644d00e11d2dbfcaf6}} 
+\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ \& {\bfseries operator-\/=} (const \hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ \&rhs) const
+\item 
+\mbox{\Hypertarget{classQSMatrix_a68ae7739eca3c2f32692874bac852d65}\label{classQSMatrix_a68ae7739eca3c2f32692874bac852d65}} 
+\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ {\bfseries operator$\ast$} (const \hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ \&rhs) const
+\item 
+\mbox{\Hypertarget{classQSMatrix_a44c90b19f63d55bd02772a89e27d8e2a}\label{classQSMatrix_a44c90b19f63d55bd02772a89e27d8e2a}} 
+\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ \& {\bfseries operator$\ast$=} (const \hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ \&rhs) const
+\item 
+\mbox{\Hypertarget{classQSMatrix_a4d3e92738a946d232e57dd276b5dc5e6}\label{classQSMatrix_a4d3e92738a946d232e57dd276b5dc5e6}} 
+\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ {\bfseries transpose} ()
+\item 
+\mbox{\Hypertarget{classQSMatrix_a296f8ccd5a968489a7cfcba96f35b4ad}\label{classQSMatrix_a296f8ccd5a968489a7cfcba96f35b4ad}} 
+\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ {\bfseries operator+} (const T \&rhs) const
+\item 
+\mbox{\Hypertarget{classQSMatrix_a696e530f2e7d602e92f62fecc0c8fef7}\label{classQSMatrix_a696e530f2e7d602e92f62fecc0c8fef7}} 
+\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ {\bfseries operator-\/} (const T \&rhs) const
+\item 
+\mbox{\Hypertarget{classQSMatrix_ad3147f460074f273f78640182b062e46}\label{classQSMatrix_ad3147f460074f273f78640182b062e46}} 
+\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ {\bfseries operator$\ast$} (const T \&rhs) const
+\item 
+\mbox{\Hypertarget{classQSMatrix_aa8700fcb4023d21639ead8b5f85d0390}\label{classQSMatrix_aa8700fcb4023d21639ead8b5f85d0390}} 
+\hyperlink{classQSMatrix}{Q\+S\+Matrix}$<$ T $>$ {\bfseries operator/} (const T \&rhs) const
+\item 
+\mbox{\Hypertarget{classQSMatrix_a032a8d1fe9c3ee954b4ab6dd22690bcd}\label{classQSMatrix_a032a8d1fe9c3ee954b4ab6dd22690bcd}} 
+std\+::vector$<$ T $>$ {\bfseries operator$\ast$} (const std\+::vector$<$ T $>$ \&rhs) const
+\item 
+\mbox{\Hypertarget{classQSMatrix_ab67189ef45049488de149a1e618455e7}\label{classQSMatrix_ab67189ef45049488de149a1e618455e7}} 
+std\+::vector$<$ T $>$ {\bfseries diag\+\_\+vec} ()
+\item 
+\mbox{\Hypertarget{classQSMatrix_a1f4c4fd8c7a922baab8dd3aea2894aaa}\label{classQSMatrix_a1f4c4fd8c7a922baab8dd3aea2894aaa}} 
+T \& {\bfseries operator()} (const unsigned \&row, const unsigned \&col)
+\item 
+\mbox{\Hypertarget{classQSMatrix_a90a37e270405f5138971f4c9cec15af7}\label{classQSMatrix_a90a37e270405f5138971f4c9cec15af7}} 
+const T \& {\bfseries operator()} (const unsigned \&row, const unsigned \&col) const
+\item 
+\mbox{\Hypertarget{classQSMatrix_ac544f0aaca9372cb3505001ffbbe25d7}\label{classQSMatrix_ac544f0aaca9372cb3505001ffbbe25d7}} 
+unsigned {\bfseries get\+\_\+rows} () const
+\item 
+\mbox{\Hypertarget{classQSMatrix_a6a8375ab09ce7fd394cb72087c2e5dc5}\label{classQSMatrix_a6a8375ab09ce7fd394cb72087c2e5dc5}} 
+unsigned {\bfseries get\+\_\+cols} () const
+\item 
+\mbox{\Hypertarget{classQSMatrix_a4c9d5aadafd932be69a3d8a3f5280e72}\label{classQSMatrix_a4c9d5aadafd932be69a3d8a3f5280e72}} 
+void {\bfseries print} () const
+\item 
+\mbox{\Hypertarget{classQSMatrix_a2b176f702f48987470eee7d42fe80b0d}\label{classQSMatrix_a2b176f702f48987470eee7d42fe80b0d}} 
+std\+::string {\bfseries get\+Representation} () const
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classQSMatrix_adce3f956f2f99ba8abf1386783bef07b}\label{classQSMatrix_adce3f956f2f99ba8abf1386783bef07b}} 
+static std\+::vector$<$ T $>$ {\bfseries vector\+Add} (const std\+::vector$<$ T $>$ \&vec1, const std\+::vector$<$ T $>$ \&vec2)
+\item 
+\mbox{\Hypertarget{classQSMatrix_aacbc52fa3a1d5962de15087e28394c4c}\label{classQSMatrix_aacbc52fa3a1d5962de15087e28394c4c}} 
+static std\+::vector$<$ T $>$ {\bfseries vector\+Substract} (const std\+::vector$<$ T $>$ \&vec1, const std\+::vector$<$ T $>$ \&vec2)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classQSMatrix_a3b00ff1ea79138d48928cd8e6844c37a}\label{classQSMatrix_a3b00ff1ea79138d48928cd8e6844c37a}} 
+std\+::vector$<$ std\+::vector$<$ T $>$ $>$ {\bfseries mat}
+\item 
+\mbox{\Hypertarget{classQSMatrix_a4876bd443be51265e38f916b772ea3c8}\label{classQSMatrix_a4876bd443be51265e38f916b772ea3c8}} 
+unsigned {\bfseries rows}
+\item 
+\mbox{\Hypertarget{classQSMatrix_a8afb78dc369b889127a8ac8bbf3bf628}\label{classQSMatrix_a8afb78dc369b889127a8ac8bbf3bf628}} 
+unsigned {\bfseries cols}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class Q\+S\+Matrix$<$ T $>$}
+
+Class for matrices and vectors computation. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\hyperlink{QSMatrix_8h}{Q\+S\+Matrix.\+h}\item 
+src/\hyperlink{QSMatrix_8cpp}{Q\+S\+Matrix.\+cpp}\end{DoxyCompactItemize}
