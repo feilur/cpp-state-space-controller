@@ -1,3 +1,10 @@
+/**
+ * @file QSMatrix.cpp
+ * @brief QSMatrix class source file.
+ * @author quantstart.com, updated by Alexis Proux
+ * @date 1 July 2021
+ ******/
+
 #ifndef __QS_MATRIX_CPP
 #define __QS_MATRIX_CPP
 
@@ -234,7 +241,7 @@ std::vector<T> QSMatrix<T>::operator*(const std::vector<T>& rhs) const{
 
 // Vector/vector operations
 template<typename T>
-std::vector<T> QSMatrix<T>::vectorAdd(const std::vector<T> vec1, const std::vector<T> vec2)
+std::vector<T> QSMatrix<T>::vectorAdd(const std::vector<T>& vec1, const std::vector<T>& vec2)
 {
     std::vector<T> result(vec1.size(), 0);
 
@@ -247,7 +254,7 @@ std::vector<T> QSMatrix<T>::vectorAdd(const std::vector<T> vec1, const std::vect
 }
 
 template<typename T>
-std::vector<T> QSMatrix<T>::vectorSubstract(const std::vector<T> vec1, const std::vector<T> vec2)
+std::vector<T> QSMatrix<T>::vectorSubstract(const std::vector<T>& vec1, const std::vector<T>& vec2)
 {
     std::vector<T> result(vec1.size(), 0);
 

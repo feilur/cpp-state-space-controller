@@ -1,3 +1,10 @@
+/**
+ * @file stateSpaceController.h
+ * @brief StateSpaceController class header.
+ * @author Alexis Proux
+ * @date 1 July 2021
+ ******/
+
 #ifndef STATESPACECONTROLLER_H
 #define STATESPACECONTROLLER_H
 
@@ -15,7 +22,7 @@
  * 
  *               StateSpaceController class
  *           ______________/\______________
- *          /       ___        ________    \  _____^___
+ *          /       ___        ________    \  ________
  *             r  +/   \  e   |        |  u  |        |   y
  *           ---->|     |---->|   K    |---->| Plant  |---+-->  
  *                 \___/      |________|     |________|   |
@@ -76,6 +83,25 @@
      * -------FILE_END-------
      */
 
+/**
+ * @class StateSpaceController
+ * @brief General State-Space Controller class.
+ * @details See "example_StateSpaceController.cpp.example" to have an implementation example.
+ * 
+ * Assuming K is the controller:
+ * 
+ *      K:
+ * 
+ *          | x_{i+1} = A*x_i + B*e_i
+ *          |     u_i = C*x_i + D*e_i
+ *
+ *              with e_i = r_i - y_i  
+ * 
+ * QSMatrix class can be totally unused by user if a data file is generated to import the controller matrices.
+ * See loadControllerData() or StateSpaceController::StateSpaceController() for file format and more details.
+ * 
+ * This class can be used as a state space controller alone or coupled with a comparator to generate the error vector by using overloaded member functions.
+ ******/
 template <typename T>
 class StateSpaceController
 {
@@ -154,13 +180,13 @@ class StateSpaceController
     std::vector<T> getX_i() const;
 	
 	// Print the state-space representation of the controller
-	void printSS() const;
+	void printStateSpace() const;
     
     // Print all vectors of the current state of the controller (time, r, y, e, u, x)
     void printState() const;
     
     // Export the state-space representation to string
-    std::string getSS() const;
+    std::string getStateSpace() const;
     
     // Reset time and states (to zero)
     void reset();
@@ -178,24 +204,84 @@ class StateSpaceController
         
     
     // State-space matrices
+    /**
+     * @brief Controller A matrix in state space representation.
+     ******/
 	QSMatrix<T> m_A;
+    /**
+     * @brief Controller B matrix in state space representation.
+     ******/
 	QSMatrix<T> m_B;
+    /**
+     * @brief Controller C matrix in state space representation.
+     ******/
     QSMatrix<T> m_C;
+    /**
+     * @brief Controller D matrix in state space representation.
+     ******/
 	QSMatrix<T> m_D;
-    float m_t_s;   // Time step of the controller
-    unsigned int m_i;   // Indice of the current time
-    float m_t;     // Current time
     
+    /**
+     * @brief Time step of the controller (seconds).
+     ******/
+    float m_t_s;
     
-	unsigned int m_nx; // State vector dimension
-	unsigned int m_ne; // Error vector dimension
-	unsigned int m_nu; // Controller output vector dimension
-    std::vector<T> m_x_i;    // Current state
-    std::vector<T> m_x_ib; // Backup of the last state for display
-    std::vector<T> m_r_i;    // Current reference signal
-    std::vector<T> m_y_i;    // Current global system output
-    std::vector<T> m_e_i;    // Current error
-    std::vector<T> m_u_i;    // Current output
+    /**
+     * @brief Indice of the current state.
+     * @details Automatically incremented on each StateSpaceController::currentOutput() call.
+     ******/
+    unsigned int m_i;
+    
+    /**
+     * @brief Current time (seconds).
+     * @details Automatically incremented on each StateSpaceController::currentOutput() call.
+     ******/
+    float m_t;
+    
+    /**
+     * @brief State vector dimension.
+     ******/
+	unsigned int m_nx;
+	
+	/**
+     * @brief Error vector dimension.
+     ******/
+	unsigned int m_ne;
+	
+	/**
+     * @brief Controller output vector dimension.
+     ******/
+	unsigned int m_nu;
+	
+	/**
+     * @brief Current state vector.
+     ******/
+    std::vector<T> m_x_i;
+    
+    /**
+     * @brief Last state vector.
+     ******/
+    std::vector<T> m_x_ib;
+    
+    /**
+     * @brief Current reference signal vector.
+     ******/
+    std::vector<T> m_r_i;
+    
+    /**
+     * @brief Current global plant output vector.
+     ******/
+    std::vector<T> m_y_i;
+    
+    /**
+     * @brief Current error vector.
+     ******/
+    std::vector<T> m_e_i;
+    
+    /**
+     * @brief Current controller output vector.
+     ******/
+    std::vector<T> m_u_i;
 };
 
 #include "stateSpaceController.cpp"

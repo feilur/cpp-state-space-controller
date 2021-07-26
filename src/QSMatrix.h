@@ -1,3 +1,11 @@
+/**
+ * @file QSMatrix.h
+ * @brief QSMatrix class header.
+ * @author quantstart.com, updated by Alexis Proux
+ * @date 1 July 2021
+ ******/
+
+
 #ifndef __QS_MATRIX_H
 #define __QS_MATRIX_H
 
@@ -7,6 +15,10 @@
 #include <sstream>   
 #include <cmath> 
 
+/**
+ * @class QSMatrix
+ * @brief Class for matrices and vectors computation.
+ ******/
 template <typename T> 
 class QSMatrix {
  private:
@@ -43,8 +55,8 @@ class QSMatrix {
   std::vector<T> diag_vec();
   
   // Vector/vector operations
-  static std::vector<T> vectorAdd(const std::vector<T> vec1, const std::vector<T> vec2);
-  static std::vector<T> vectorSubstract(const std::vector<T> vec1, const std::vector<T> vec2);
+  static std::vector<T> vectorAdd(const std::vector<T>& vec1, const std::vector<T>& vec2);
+  static std::vector<T> vectorSubstract(const std::vector<T>& vec1, const std::vector<T>& vec2);
 
   // Access the individual elements                                                                                                                                                                                               
   T& operator()(const unsigned& row, const unsigned& col);

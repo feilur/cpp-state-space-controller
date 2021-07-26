@@ -1,15 +1,34 @@
+/**
+ * @file stateSpaceController.cpp
+ * @brief StateSpaceController class source file.
+ * @author Alexis Proux
+ * @date 1 July 2021
+ ******/
+
 #ifndef STATESPACECONTROLLER_CPP
 #define STATESPACECONTROLLER_CPP
 
 #include "stateSpaceController.h"
 
 // Constructeur par defaut
+/**
+ * @brief Default constructor.
+ * @details Construct a StateSpaceController object with basic matrices.
+ ******/
 template<typename T>
 StateSpaceController<T>::StateSpaceController() : m_A(1,1,0), m_B(1,1,0), m_C(1,1,0), m_D(1,1,1), m_t_s(1),m_i(0),m_t(0),m_nx(m_A.get_rows()),m_ne(m_B.get_cols()),m_nu(m_C.get_rows()), m_x_i(m_nx,0), m_x_ib(m_nx,0),m_r_i(m_ne,0),m_y_i(m_ne,0),m_e_i(m_ne,0),m_u_i(m_nu,0)
 {
 }
 
 // Constructeur
+/**
+ * @brief Constructor using user-generated QSMatrix matrices.
+ * @param A Controller A matrix in state space representation.
+ * @param B Controller B matrix in state space representation.
+ * @param C Controller C matrix in state space representation.
+ * @param D Controller D matrix in state space representation.
+ * @param t_s Controller time step (seconds).
+ ******/
 template<typename T>
 StateSpaceController<T>::StateSpaceController(QSMatrix<T> A, QSMatrix<T> B, QSMatrix<T> C, QSMatrix<T> D, const float t_s):
 m_A(A), m_B(B), m_C(C), m_D(D), m_t_s(t_s), m_i(0),m_t(0),m_nx(m_A.get_rows()),m_ne(m_B.get_cols()),m_nu(m_C.get_rows()), m_x_i(m_nx,0), m_x_ib(m_nx,0),m_r_i(m_ne,0),m_y_i(m_ne,0),m_e_i(m_ne,0),m_u_i(m_nu,0)
@@ -22,22 +41,16 @@ m_A(A), m_B(B), m_C(C), m_D(D), m_t_s(t_s), m_i(0),m_t(0),m_nx(m_A.get_rows()),m
      */
 }
 
-template<typename T>
-StateSpaceController<T>::StateSpaceController(std::string formattedDataFilePath):m_i(0),m_t(0)
-{
-    /*
-     * Constructor from file.dat : useful to import data from controller synthesis
-     * 
-     * formattedDataFilePath : Path to the file
-     * 
-     * The file has to be formatted as follows:
+/**
+ * @brief Constructor using generated controller data file.
+ * @details The file has to be formatted as follows:
      * 
      * -------FILE_BEGIN-------
-     * Time step value (seconds) (example : 0.1)
+     * Time step value (seconds) (example: 0.1)
      * State vector dimension nx
-     * Error vector dimension ne (example : 2)
+     * Error vector dimension ne (example: 2)
      * Controller output vector dimension nu
-     * A[0,0] value (example : 12.354)
+     * A[0,0] value (example: 12.354)
      * ...
      * A[0,nx]
      * A[1,0]
@@ -45,7 +58,7 @@ StateSpaceController<T>::StateSpaceController(std::string formattedDataFilePath)
      * A[1,nx]
      * ...
      * A[nx,nx]
-     * B[0,0] value (example : 12.354)
+     * B[0,0] value (example: 12.354)
      * ...
      * B[0,ne]
      * B[1,0]
@@ -53,7 +66,7 @@ StateSpaceController<T>::StateSpaceController(std::string formattedDataFilePath)
      * B[1,ne]
      * ...
      * B[nx,ne]
-     * C[0,0] value (example : 12.354)
+     * C[0,0] value (example: 12.354)
      * ...
      * C[0,nx]
      * C[1,0]
@@ -61,7 +74,7 @@ StateSpaceController<T>::StateSpaceController(std::string formattedDataFilePath)
      * C[1,nx]
      * ...
      * C[nu,nx]
-     * D[0,0] value (example : 12.354)
+     * D[0,0] value (example: 12.354)
      * ...
      * D[0,ne]
      * D[1,0]
@@ -70,8 +83,11 @@ StateSpaceController<T>::StateSpaceController(std::string formattedDataFilePath)
      * ...
      * D[nu,ne]
      * -------FILE_END-------
-     */
-	
+ * @param formattedDataFilePath Path of the controller data file.
+ ******/
+template<typename T>
+StateSpaceController<T>::StateSpaceController(std::string formattedDataFilePath):m_i(0),m_t(0)
+{
     m_i = 0;
     m_t = 0;
     
@@ -79,66 +95,68 @@ StateSpaceController<T>::StateSpaceController(std::string formattedDataFilePath)
 }
 
 // Constructeur de copie
+/**
+ * @brief Copy constructor.
+ * @param other Another StateSpaceController object.
+ ******/
 template<typename T>
 StateSpaceController<T>::StateSpaceController(StateSpaceController<T> const& other):
-m_A(other.m_A), m_B(other.m_B), m_C(other.m_C), m_D(other.m_D),m_i(0),m_t(0), m_t_s(other.m_t_s),m_nx(m_A.get_rows()),m_ne(m_B.get_cols()),m_nu(m_C.get_rows()), m_x_i(m_nx,0), m_x_ib(m_nx,0),m_r_i(m_ne,0),m_y_i(m_ne,0),m_e_i(m_ne,0),m_u_i(m_nu,0)
+m_A(other.m_A), m_B(other.m_B), m_C(other.m_C), m_D(other.m_D),m_i(other.m_i),m_t(other.m_t), m_t_s(other.m_t_s),m_nx(other.m_nx),m_ne(other.m_ne),m_nu(other.m_nu), m_x_i(other.m_x_i), m_x_ib(other.m_x_ib),m_r_i(other.m_r_i),m_y_i(other.m_y_i),m_e_i(other.m_e_i),m_u_i(other.m_u_i)
 {
 }
 
+/**
+ * @brief = operator.
+ * @param controller Another StateSpaceController object.
+ ******/
 template<typename T>
 StateSpaceController<T>& StateSpaceController<T>::operator=(const StateSpaceController<T>& controller)
 {
     // Here there is no reset but it could be necessary sometimes
     
-    m_t_s = controller.getTimeStep();
+    m_i = controller.m_i;
+    m_t = controller.m_t;
     
-    m_A = controller.getA();
-    m_B = controller.getB();
-    m_C = controller.getC();
-    m_D = controller.getD();
+    m_t_s = controller.m_t_s;
     
-    m_nx = controller.getNx();
-    m_ne = controller.getNe();
-    m_nu = controller.getNu();
+    m_A = controller.m_A;
+    m_B = controller.m_B;
+    m_C = controller.m_C;
+    m_D = controller.m_D;
     
-    std::vector<T> x_i(m_nx,0);
+    m_nx = controller.m_nx;
+    m_ne = controller.m_ne;
+    m_nu = controller.m_nu;
+    
+    m_x_i = controller.m_x_i;
+    m_x_ib = controller.m_x_ib;
+
+    m_r_i = controller.m_r_i;
+    m_y_i = controller.m_y_i;
+    m_e_i = controller.m_e_i;
         
-    m_x_i = x_i;
-    m_x_ib = x_i;
-        
-    std::vector<T> e_i(m_ne,0);
-        
-    m_r_i = e_i;
-    m_y_i = e_i;
-    m_e_i = e_i;
-        
-    std::vector<T> u_i(m_nu,0);
-        
-    m_u_i = u_i;
+    m_u_i = controller.m_u_i;
     
     return *this;
 }
 
 // (Virtual) Destructor
+/**
+ * @brief Destructor.
+ ******/
 template<typename T>
 StateSpaceController<T>::~StateSpaceController() {}
 
-template<typename T>
-void StateSpaceController<T>::loadControllerData(std::string formattedDataFilePath)
-{
-    /*
-     * Constructor from file.dat : useful to import data from controller synthesis
-     * 
-     * formattedDataFilePath : Path to the file
-     * 
-     * The file has to be formatted as follows:
+/**
+ * @brief Modifies the controller from a controller data file.
+ * @details The file has to be formatted as follows:
      * 
      * -------FILE_BEGIN-------
-     * Time step value (seconds) (example : 0.1)
+     * Time step value (seconds) (example: 0.1)
      * State vector dimension nx
-     * Error vector dimension ne (example : 2)
+     * Error vector dimension ne (example: 2)
      * Controller output vector dimension nu
-     * A[0,0] value (example : 12.354)
+     * A[0,0] value (example: 12.354)
      * ...
      * A[0,nx]
      * A[1,0]
@@ -146,7 +164,7 @@ void StateSpaceController<T>::loadControllerData(std::string formattedDataFilePa
      * A[1,nx]
      * ...
      * A[nx,nx]
-     * B[0,0] value (example : 12.354)
+     * B[0,0] value (example: 12.354)
      * ...
      * B[0,ne]
      * B[1,0]
@@ -154,7 +172,7 @@ void StateSpaceController<T>::loadControllerData(std::string formattedDataFilePa
      * B[1,ne]
      * ...
      * B[nx,ne]
-     * C[0,0] value (example : 12.354)
+     * C[0,0] value (example: 12.354)
      * ...
      * C[0,nx]
      * C[1,0]
@@ -162,7 +180,7 @@ void StateSpaceController<T>::loadControllerData(std::string formattedDataFilePa
      * C[1,nx]
      * ...
      * C[nu,nx]
-     * D[0,0] value (example : 12.354)
+     * D[0,0] value (example: 12.354)
      * ...
      * D[0,ne]
      * D[1,0]
@@ -171,7 +189,13 @@ void StateSpaceController<T>::loadControllerData(std::string formattedDataFilePa
      * ...
      * D[nu,ne]
      * -------FILE_END-------
-     */
+ * @param formattedDataFilePath Path of the controller data file.
+ ******/
+template<typename T>
+void StateSpaceController<T>::loadControllerData(std::string formattedDataFilePath)
+{    
+    //m_i = 0;
+    //m_t = 0;
     
     std::ifstream readStream;
     readStream.open(formattedDataFilePath.c_str());
@@ -181,7 +205,7 @@ void StateSpaceController<T>::loadControllerData(std::string formattedDataFilePa
         std::string line;
         
         std::getline(readStream, line);
-        m_t_s = std::stod(line);
+        m_t_s = std::stof(line);
         std::getline(readStream, line);
         m_nx = std::stoi(line);
         std::getline(readStream, line);
@@ -250,13 +274,15 @@ void StateSpaceController<T>::loadControllerData(std::string formattedDataFilePa
     }
     else
     {
-        std::cout << "\033[1;31mERROR: Unable to open data file.\033[0m" << std::endl << std::endl;
+        std::cout << "\033[1;31mERROR: Unable to open state space controller data file.\033[0m" << std::endl << std::endl;
     }
     
     readStream.close();
 }
 
-// Exemple de methode statique
+/**
+ * @brief Display the StateSpaceController class help.
+ ******/
 template<typename T>
 void StateSpaceController<T>::help() // ne pas remettre "static"
 {
@@ -308,99 +334,147 @@ void StateSpaceController<T>::help() // ne pas remettre "static"
      "-------FILE_END-------"<< std::endl << std::endl;
 }
 
-// Exemple d'accesseurs :
+/**
+ * @return Controller A matrix in state space representation.
+ ******/
 template<typename T>
 QSMatrix<T> StateSpaceController<T>::getA() const
 {
 	return m_A;
 }
 
+/**
+ * @param A Controller A matrix in state space representation.
+ ******/
 template<typename T>
 void StateSpaceController<T>::setA(QSMatrix<T> A)
 {
 	m_A = A;
 }
 
+/**
+ * @return Controller B matrix in state space representation.
+ ******/
 template<typename T>
 QSMatrix<T> StateSpaceController<T>::getB() const
 {
 	return m_B;
 }
 
+/**
+ * @param B Controller B matrix in state space representation.
+ ******/
 template<typename T>
 void StateSpaceController<T>::setB(QSMatrix<T> B)
 {
 	m_B = B;
 }
 
+/**
+ * @return Controller C matrix in state space representation.
+ ******/
 template<typename T>
 QSMatrix<T> StateSpaceController<T>::getC() const
 {
 	return m_C;
 }
 
+/**
+ * @param C Controller C matrix in state space representation.
+ ******/
 template<typename T>
 void StateSpaceController<T>::setC(QSMatrix<T> C)
 {
 	m_C = C;
 }
 
+/**
+ * @return Controller D matrix in state space representation.
+ ******/
 template<typename T>
 QSMatrix<T> StateSpaceController<T>::getD() const
 {
 	return m_D;
 }
 
+/**
+ * @param D Controller D matrix in state space representation.
+ ******/
 template<typename T>
 void StateSpaceController<T>::setD(QSMatrix<T> D)
 {
 	m_D = D;
 }
 
+/**
+ * @return Current state vector.
+ ******/
 template<typename T>
 std::vector<T> StateSpaceController<T>::getX_i() const
 {
     return m_x_i;
 }
 
+/**
+ * @return Controller time step (seconds).
+ ******/
 template<typename T>
 float StateSpaceController<T>::getTimeStep() const
 {
     return m_t_s;
 }
 
+/**
+ * @param t_s Controller time step (seconds).
+ ******/
 template<typename T>
 void StateSpaceController<T>::setTimeStep(const float t_s)
 {
     m_t_s = t_s;
 }
 
+/**
+ * @return Current time (seconds).
+ ******/
 template<typename T>
 float StateSpaceController<T>::getTime() const
 {
     return m_t;
 }
 
+/**
+ * @return State vector dimension.
+ ******/
 template<typename T>
 unsigned int StateSpaceController<T>::getNx() const
 {
     return m_nx;
 }
 
+/**
+ * @return Error vector dimension.
+ ******/
 template<typename T>
 unsigned int StateSpaceController<T>::getNe() const
 {
     return m_ne;
 }
 
+/**
+ * @return Controller output vector dimension.
+ ******/
 template<typename T>
 unsigned int StateSpaceController<T>::getNu() const
 {
     return m_nu;
 }
 
+/**
+ * @brief Prints the state space representation of the StateSpaceController object.
+ * @details Prints the controller time step and all state matrices. 
+ ******/
 template<typename T>
-void StateSpaceController<T>::printSS() const
+void StateSpaceController<T>::printStateSpace() const
 {
 	// Print StateSpaceController matrices
     std::cout << "State-space representation of the controller (time step: " << m_t_s << " s)" 
@@ -423,8 +497,12 @@ void StateSpaceController<T>::printSS() const
     std::cout << std::endl;
 }
 
+/**
+ * @brief Gives the state space representation of the StateSpaceController object.
+ * @return String that contains the controller time step and all state matrices. 
+ ******/
 template<typename T>
-std::string StateSpaceController<T>::getSS() const
+std::string StateSpaceController<T>::getStateSpace() const
 {
     std::stringstream buffer;
     
@@ -451,6 +529,12 @@ std::string StateSpaceController<T>::getSS() const
     return buffer.str();
 }
 
+/**
+ * @brief Prints the current state of the StateSpaceController object.
+ * @details Prints the current time (seconds), the reference, plant output, error, controller output and state vector of the controller.
+ * 
+ * Prints a header if this function is called when the current indice is equal to 1.
+ ******/
 template<typename T>
 void StateSpaceController<T>::printState() const
 {
@@ -510,6 +594,11 @@ void StateSpaceController<T>::printState() const
         std::cout << std::endl;
 }
 
+/**
+ * @brief Computes the current controller output with the error vector and increments time.
+ * @param e_i Current error vector.
+ * @return Controller output vector.
+ ******/
 template<typename T>
 std::vector<T> StateSpaceController<T>::currentOutput(const std::vector<T>& e_i)
 {
@@ -529,6 +618,14 @@ std::vector<T> StateSpaceController<T>::currentOutput(const std::vector<T>& e_i)
     return m_u_i;
 }
 
+/**
+ * @brief Computes the current controller output with the error vector, applies a saturation and increments time.
+ * @details Saturation vectors are used to tune each controller output. 
+ * @param e_i Current error vector.
+ * @param u_min Bottom saturation vector.
+ * @param u_max Top saturation vector.
+ * @return Controller output vector.
+ ******/
 template<typename T>
 std::vector<T> StateSpaceController<T>::currentOutput(const std::vector<T>& e_i, const std::vector<T>& u_min, const std::vector<T>& u_max)
 {
@@ -537,18 +634,21 @@ std::vector<T> StateSpaceController<T>::currentOutput(const std::vector<T>& e_i,
      * 
      * e_i : system error between global system output y_i and reference r_i
      */
-    m_e_i = e_i;    // Update error signal
-    
-    //m_u_i = m_C * m_x_i + m_D * m_e_i;// Update controller output
-    m_u_i = QSMatrix<T>::vectorAdd(m_C * m_x_i, m_D * m_e_i);
+    currentOutput(e_i);
     
     saturation(u_min, u_max); // Limit the controller output
-    
-    nextState();  // Update next iteration state signal
     
     return m_u_i;
 }
 
+/**
+ * @brief Computes the current controller output with the error vector, applies a saturation and increments time.
+ * @details Unique saturation values are used to tune all controller outputs at once.
+ * @param e_i Current error vector.
+ * @param u_min Bottom saturation value.
+ * @param u_max Top saturation value.
+ * @return Controller output vector.
+ ******/
 template<typename T>
 std::vector<T> StateSpaceController<T>::currentOutput(const std::vector<T>& e_i, const T& u_min, const T& u_max)
 {
@@ -557,18 +657,19 @@ std::vector<T> StateSpaceController<T>::currentOutput(const std::vector<T>& e_i,
      * 
      * e_i : system error between global system output y_i and reference r_i
      */
-    m_e_i = e_i;    // Update error signal
-    
-    //m_u_i = m_C * m_x_i + m_D * m_e_i;// Update controller output
-    m_u_i = QSMatrix<T>::vectorAdd(m_C * m_x_i, m_D * m_e_i);
+    currentOutput(e_i);
     
     saturation(u_min, u_max); // Limit the controller output
-    
-    nextState();  // Update next iteration state signal
     
     return m_u_i;
 }
 
+/**
+ * @brief Computes the current controller output with the reference vector and the plant output vector  and increments time.
+ * @param r_i Current reference vector.
+ * @param y_i Current plant output vector.
+ * @return Controller output vector.
+ ******/
 template<typename T>
 std::vector<T> StateSpaceController<T>::currentOutput(const std::vector<T>& r_i, const std::vector<T>& y_i)
 {
@@ -584,14 +685,20 @@ std::vector<T> StateSpaceController<T>::currentOutput(const std::vector<T>& r_i,
     
     currentError();   // Update error signal
     
-    //m_u_i = m_C * m_x_i + m_D * m_e_i; // Update controller output
-    m_u_i = QSMatrix<T>::vectorAdd(m_C * m_x_i, m_D * m_e_i);
-    
-    nextState();  // Update next iteration state signal
+    currentOutput(m_e_i);
     
     return m_u_i;
 }
 
+/**
+ * @brief Computes the current controller output with the reference vector and the plant output vector, applies a saturation and increments time.
+ * @details Saturation vectors are used to tune each controller output. 
+ * @param r_i Current reference vector.
+ * @param y_i Current plant output vector.
+ * @param u_min Bottom saturation vector.
+ * @param u_max Top saturation vector.
+ * @return Controller output vector.
+ ******/
 template<typename T>
 std::vector<T> StateSpaceController<T>::currentOutput(const std::vector<T>& r_i, const std::vector<T>& y_i, const std::vector<T>& u_min, const std::vector<T>& u_max)
 {
@@ -607,16 +714,22 @@ std::vector<T> StateSpaceController<T>::currentOutput(const std::vector<T>& r_i,
     
     currentError();   // Update error signal
     
-    //m_u_i = m_C * m_x_i + m_D * m_e_i; // Update controller output
-    m_u_i = QSMatrix<T>::vectorAdd(m_C * m_x_i, m_D * m_e_i);
+    currentOutput(m_e_i);
     
     saturation(u_min, u_max); // Limit the controller output
-    
-    nextState();  // Update next iteration state signal
     
     return m_u_i;
 }
 
+/**
+ * @brief Computes the current controller output with the reference vector and the plant output vector, applies a saturation and increments time.
+ * @details Unique saturation values are used to tune all controller outputs at once.
+ * @param r_i Current reference vector.
+ * @param y_i Current plant output vector.
+ * @param u_min Bottom saturation value.
+ * @param u_max Top saturation value.
+ * @return Controller output vector.
+ ******/
 template<typename T>
 std::vector<T> StateSpaceController<T>::currentOutput(const std::vector<T>& r_i, const std::vector<T>& y_i, const T& u_min, const T& u_max)
 {
@@ -632,16 +745,19 @@ std::vector<T> StateSpaceController<T>::currentOutput(const std::vector<T>& r_i,
     
     currentError();   // Update error signal
     
-    //m_u_i = m_C * m_x_i + m_D * m_e_i; // Update controller output
-    m_u_i = QSMatrix<T>::vectorAdd(m_C * m_x_i, m_D * m_e_i);
+    currentOutput(m_e_i);
     
     saturation(u_min, u_max); // Limit the controller output
-    
-    nextState();  // Update next iteration state signal
     
     return m_u_i;
 }
 
+/**
+ * @brief Applies a saturation on the controller output vector.
+ * @details Saturation vectors are used to tune each controller output.
+ * @param u_min Bottom saturation vector.
+ * @param u_max Top saturation vector.
+ ******/
 template<typename T>
 void StateSpaceController<T>::saturation(const std::vector<T>& u_min, const std::vector<T>& u_max)
 {
@@ -658,6 +774,12 @@ void StateSpaceController<T>::saturation(const std::vector<T>& u_min, const std:
     }
 }
 
+/**
+ * @brief Applies a saturation on the controller output vector.
+ * @details Unique saturation values are used to tune all controller outputs at once.
+ * @param u_min Bottom saturation value.
+ * @param u_max Top saturation value.
+ ******/
 template<typename T>
 void StateSpaceController<T>::saturation(const T& u_min, const T& u_max)
 {
@@ -674,6 +796,9 @@ void StateSpaceController<T>::saturation(const T& u_min, const T& u_max)
     }
 }
 
+/**
+ * @brief Computes the next state vector value and increments time.
+ ******/
 template<typename T>
 void StateSpaceController<T>::nextState()
 {
@@ -689,6 +814,9 @@ void StateSpaceController<T>::nextState()
     m_i++;
 }
 
+/**
+ * @brief Resets time and state vector.
+ ******/
 template<typename T>
 void StateSpaceController<T>::reset()
 {
@@ -702,6 +830,9 @@ void StateSpaceController<T>::reset()
     m_t = 0;
 }
 
+/**
+ * @brief Computes the current error vector from reference vector and plant output vector.
+ ******/
 template<typename T>
 void StateSpaceController<T>::currentError()
 {
