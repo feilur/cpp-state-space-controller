@@ -67,4 +67,4 @@ General State-Space Controller class.
       D[nu,ne]
       -------FILE_END-------
 
-TODO : Reorganize repository to be able to import it as submodule.
+**TODO** : Reorganize repository to be able to import it as submodule.
